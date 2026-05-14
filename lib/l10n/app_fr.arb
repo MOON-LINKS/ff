@@ -1,0 +1,404 @@
+{
+  "language_title": "Langue",
+  "services": "SERVICES",
+  "best_services_for_you": "MEILLEURS SERVICES POUR VOUS",
+  "menu": "MENU",
+  "generator": "GÉNÉRATEUR",
+  "biopage": "BIOPAGE",
+  "free_generator": "GÉNÉRATEUR GRATUIT",
+  "qr_code": "CODE QR",
+  "barcode": "CODE BARRES",
+  "secure_payments_supported_by": "Paiements sécurisés pris en charge par",
+
+  "workspace": "ESPACE DE TRAVAIL",
+  "upgrade_plan": "Mettre à niveau le plan",
+  "less_info": "Moins d'infos",
+  "more_info": "Plus d'infos",
+  "auto_renew": "Renouvellement automatique",
+  "you_are_not_subscribed_yet": "Vous n’êtes pas encore abonné",
+  "must_be_logged_in_to_access_services": "Vous devez être connecté pour accéder à vos services",
+
+  "infinite_access": "Accès illimité",
+  "what_we_offer_and_whats_new": "Ce que nous offrons et les nouveautés",
+
+  "this_plan_is_in_cart": "Ce plan est dans le panier",
+  "you_are_subscribed_to_this_plan": "Vous êtes abonné à ce plan",
+  "menu_title": "MENU",
+  "menu_description": "Que vous dirigiez un petit café, un restaurant animé ou un service de restauration en ligne, notre outil de création de menus est fait pour vous. Simple, flexible et facile à utiliser, il vous permet de créer des menus qui reflètent votre marque. Avec l’hébergement en ligne intégré, vos clients peuvent toujours voir votre menu à jour où qu’ils soient. Découvrez nos plans et choisissez celui qui convient le mieux à votre entreprise.",
+
+  "plans": "PLANS",
+  "monthly": "MENSUEL",
+  "six_months": "6 MOIS",
+  "yearly": "ANNUEL",
+  "learn_how_to_build_your_menu": "Apprenez à créer votre menu",
+
+  "profile": "PROFIL",
+  "information_about_you": "INFORMATIONS SUR VOUS",
+  "name": "Nom",
+  "email": "Email",
+  "password": "Mot de passe",
+  "logout": "Déconnexion",
+
+  "register": "S’inscrire",
+  "sign_up_for_new_acc": "Créer un nouveau compte",
+  "accept_term_and_conditions": "Vous devez accepter les conditions",
+  "registering": "Inscription...",
+
+  "reset_your_password": "Réinitialiser le mot de passe",
+  "enter_your_new_password": "Entrez votre nouveau mot de passe",
+  "re_enter_your_password": "Confirmez le mot de passe",
+  "reset": "Réinitialiser",
+
+  "enter_your_otp": "Entrez le code OTP",
+  "enter_your_mail": "Entrez votre email",
+  "reset_your_password_title": "Réinitialisez votre mot de passe si oublié",
+  "otp_title": "OTP",
+  "enter_the_6_digit_code_you_received": "Entrez le code à 6 chiffres",
+
+  "registration_successful": "Inscription réussie!",
+  "wrong_otp_try_again_later": "OTP incorrect, réessayez plus tard",
+
+  "logout_from_all": "Déconnexion de tous",
+  "logout_from_all_opened_sessions": "Déconnexion de toutes les sessions ouvertes",
+  "enter_your_password": "Entrez votre mot de passe",
+
+  "log_in": "Connexion",
+  "log_into_account": "Connectez-vous à votre compte",
+  "login_failed": "Échec de connexion",
+  "checking_inputs": "Vérification...",
+  "login_successful": "Connexion réussie!",
+
+  "sign_up": "S’inscrire",
+  "close": "Fermer",
+
+  "upgrade": "Mettre à niveau",
+  "you_have_to_pay_more": "Vous devez payer plus",
+  "i_accept_terms_and_conditions": "J’accepte les conditions",
+
+  "add_to_cart": "Ajouter au panier",
+  "view_plan_description": "Voir la description du plan",
+
+  "feature_30_images": "• 30 images",
+  "feature_order_method": "• Méthode de commande",
+  "feature_color_patterns": "• Couleurs",
+  "feature_logo": "• Logo",
+  "feature_banner": "• Bannière",
+  "feature_offer": "• Offre",
+  "feature_unlimited_categories_items": "• Catégories et articles illimités",
+  "feature_fonts": "• Polices",
+  "feature_qr_code_generated": "• Génération QR code",
+  "feature_moon_links_hosting": "• Hébergement MOON LINKS",
+
+  "feature_150_images": "• 150 images",
+  "feature_open_close_timers": "• Horaires ouverture/fermeture",
+  "feature_feedback": "• Avis",
+  "feature_3_social_media_links": "• 3 réseaux sociaux",
+
+  "feature_300_images": "• 300 images",
+  "feature_category_images_upload": "• Upload images catégories",
+  "feature_unlimited_social_media_links": "• Réseaux sociaux illimités",
+  "feature_country_branch_locations": "• Localisations des branches",
+  "feature_real_time_animations": "• Animations en temps réel",
+  "feature_analytics": "• Analytique",
+  "feature_translate_up_to_6_languages": "• Traduction jusqu’à 6 langues",
+  "feature_unlimited_images_add_ons": "• Add-ons images illimités",
+  "feature_enhanced_seo_digital_marketing": "• SEO & marketing amélioré",
+  "feature_24_7_priority_support": "• Support prioritaire 24/7",
+
+  "home_nav": "Accueil",
+  "services_nav": "Services",
+  "my_services_nav": "Mes services",
+  "profile_nav": "Profil",
+
+  "selected": "sélectionné",
+
+  "confirm_add_on": "Confirmer l’extension",
+  "confirm_add_on_message": "Cette action mettra à jour votre extension et débitera votre compte. Voulez-vous continuer?",
+  "cancel": "Annuler",
+  "continue_action": "Continuer",
+  "addon_price_rule": "2 $ pour chaque 100 images ajoutées",
+  "total_add_on_is": "Total de l’extension",
+  "update_add": "Mettre à jour",
+  "add_on": "Extension",
+  "total_price": "Prix total",
+
+  "field_required": "Ce champ est requis",
+  "invalid_email": "Entrez un email valide",
+  "password_min_length": "Le mot de passe doit contenir au moins 6 caractères",
+
+  "no_addon_data_available": "Aucune donnée d’extension",
+  "images_added": "Images ajoutées",
+  "till": "Jusqu’à",
+  "status": "Statut",
+
+  "must_be_signed_in_to_pay": "Vous devez être connecté pour payer",
+  "sign_in": "Se connecter",
+  "account_not_verified": "Votre compte n’est pas vérifié",
+  "no_added_service": "Aucun service ajouté",
+  "cart": "Panier",
+  "pay_now": "PAYER MAINTENANT",
+
+  
+  "menu_delete_subcategory": "Supprimer la sous-catégorie ?",
+  "menu_delete_subcategory_message": "Êtes-vous sûr de vouloir supprimer cette sous-catégorie ? Tous les éléments qu’elle contient seront également supprimés.",
+  "menu_delete": "Supprimer",
+  "menu_update": "Mettre à jour",
+  "menu_delete_image": "Supprimer l’image",
+  "menu_subcategories_for": "Sous-catégories pour",
+  "menu_no_subcategories_found": "Aucune sous-catégorie trouvée",
+  "menu_add_subcategory": "AJOUTER UNE SOUS-CATÉGORIE",
+
+  "menu_checking_inputs": "Vérification des champs...",
+  "menu_unsaved_changes": "Modifications non enregistrées",
+  "menu_unsaved_changes_message": "Vous avez des modifications non enregistrées. Que souhaitez-vous faire ?",
+  "menu_leave_anyway": "Quitter quand même",
+  "menu_publish_exit": "Publier et quitter",
+
+  "menu_name": "Nom",
+  "menu_name_unique_hint": "Le nom doit être unique.\nSi le nom change, le code QR devra également être mis à jour.",
+  "menu_resto_name_hint": "Entrez le nom du restaurant",
+  "menu_name_validation": "Le nom ne doit contenir que des lettres, des chiffres et -",
+  "menu_set_name": "Définir le nom",
+
+  "menu_domain": "Domaine",
+  "menu_domain_hint": "Ajoutez votre propre domaine",
+  "menu_your_domain": "Votre domaine",
+
+  "menu_logo": "Logo",
+  "menu_logo_hint": "Téléchargez votre logo",
+
+  "menu_bio": "Description",
+  "menu_bio_hint": "Ajoutez une courte description de votre activité",
+
+  "menu_banner": "Bannière",
+  "menu_banner_hint": "Téléchargez la bannière du restaurant",
+
+  "menu_inner_banner": "Bannière interne",
+  "menu_inner_banner_hint": "Bannière pour les catégories et les articles",
+
+  "menu_loader": "Chargement",
+  "menu_loader_hint": "Ajoutez une animation de chargement pour améliorer l’expérience utilisateur",
+
+  "menu_offer": "Offre",
+  "menu_offer_hint": "Ajoutez vos offres actuelles ou vos dernières actualités",
+
+  "menu_main_colors": "Couleurs",
+  "menu_colors_hint": "Personnalisez les couleurs de votre menu",
+
+  "menu_primary": "Primaire",
+  "menu_secondary": "Secondaire",
+  "menu_title_color": "Titre",
+  "menu_text": "Texte",
+
+  "menu_currency": "Devise",
+  "menu_currency_input": "Entrez la devise (ex : $)",
+  "menu_currency_hint": "Cette devise sera appliquée à tous les prix",
+
+  "menu_categories": "Catégories",
+  "menu_categories_hint": "Cliquez pour gérer les catégories, sous-catégories et articles",
+
+  "menu_ordering": "Commande",
+  "menu_ordering_hint": "Activer la commande en ligne",
+  "branch_ordering_hint": "Commander en fonction de la succursale",
+  
+  "menu_google_account": "Compte Google",
+  "menu_google_account_hint": "Associez votre établissement ou votre compte Google",
+
+  "menu_go_home": "Accueil",
+  "menu_publish_success": "Menu publié avec succès",
+
+  "menu_delete_item": "Supprimer l’article ?",
+  "menu_delete_item_message": "Êtes-vous sûr de vouloir supprimer cet article ? Cette action est irréversible.",
+  "menu_images_used": "Images utilisées",
+  "menu_used": "Utilisé",
+  "menu_items_for": "Articles pour",
+  "menu_items_manage_hint": "Voir, ajouter et modifier les articles",
+  "menu_no_items": "Aucun article ajouté",
+  "menu_add_item": "AJOUTER UN ARTICLE",
+
+  "menu_getting_domain_info": "Récupération des informations du domaine",
+  "menu_adding_domain": "Ajout du domaine",
+  "menu_failed_to_add_domain": "Échec de l’ajout du domaine",
+  "menu_checking_domain_status": "Vérification du statut",
+  "menu_deleting_domain": "Suppression du domaine",
+  "menu_failed_to_load_domain": "Échec du chargement du domaine",
+
+  "menu_delete_category": "Supprimer ?",
+  "menu_delete_category_message": "Êtes-vous sûr de vouloir supprimer cette catégorie ? Toutes les sous-catégories et les articles seront également supprimés.",
+
+  "menu_categories_title": "Catégories",
+  "menu_categories_tooltip": "Ajouter, voir et modifier les catégories",
+
+  "menu_category_icon_colors": "Couleurs des icônes",
+  "menu_category_icon_colors_hint": "Choisissez les couleurs des icônes uniquement",
+
+  "menu_close_picker": "Fermer le sélecteur",
+  "menu_open_picker": "Ouvrir le sélecteur",
+
+  "menu_category_list": "Liste des catégories",
+  "menu_no_categories": "Aucune catégorie trouvée",
+  "menu_add_category": "AJOUTER UNE CATÉGORIE",
+
+  "menu_fonts_title": "Polices",
+  "menu_fonts_tooltip": "Choisissez la police du menu",
+
+  "menu_add_image": "Ajouter une image",
+  "menu_upload_failed": "Échec du téléchargement, veuillez réessayer",
+
+  "menu_add_category_title": "Ajouter une catégorie",
+  "menu_edit_category_title": "Modifier la catégorie",
+  "menu_category_name": "Nom de la catégorie",
+
+  "menu_replace_image": "Remplacer l’image",
+
+  "menu_image_priority_hint": "Si une icône et une image sont définies, l’image sera affichée en priorité.",
+
+  "menu_upgrade_for_images": "Passez à une offre supérieure pour télécharger des images personnalisées",
+
+  "menu_category_name_required": "Le nom de la catégorie ne peut pas être vide.",
+
+  "menu_add_close": "Ajouter et fermer",
+  "menu_save_close": "Enregistrer et fermer",
+
+  "menu_edit": "MODIFIER",
+  "menu_add_view_subcategories": "Ajouter et voir les sous-catégories",
+  "menu_contains": "Contient",
+  "menu_subcategories_count": "sous-catégorie(s)",
+
+  "menu_add_your_domain": "Ajouter votre domaine",
+  "menu_domain_input_label": "Saisissez l’URL du domaine",
+  "menu_domain_input_example": "Exemple : client1.com",
+  "menu_domain_input_hint": "client1.com",
+
+  "menu_add_domain": "Ajouter le domaine",
+  "menu_delete_domain": "Supprimer ce domaine",
+  "menu_delete_domain_message": "Êtes-vous sûr de vouloir dissocier ce domaine ?",
+
+  "menu_check_domain_status": "Vérifier le statut du domaine",
+  "menu_applied_on": "Appliqué le",
+
+  "menu_url_copied": "URL copiée dans le presse-papiers",
+
+  "menu_nameservers_title": "Serveurs de noms à ajouter :",
+  "menu_ns1_copied": "Serveur principal (NS1) copié",
+  "menu_ns2_copied": "Serveur secondaire (NS2) copié",
+
+  "menu_check_domain": "Vérifier le domaine",
+
+  "menu_add_subcategory_title": "Ajouter une sous-catégorie",
+  "menu_edit_subcategory_title": "Modifier la sous-catégorie",
+  "menu_subcategory_name": "Nom de la sous-catégorie",
+  "menu_subcategory_name_required": "Le nom de la sous-catégorie ne peut pas être vide.",
+
+  "menu_add_view_items": "Ajouter et voir les articles",
+  "menu_items_count": "article(s)",
+  "menu_phone_number": "Numéro de téléphone",
+
+  "menu_tap_link_copy": "Appuyez pour copier le lien",
+  "menu_link_copied": "Lien du menu copié !",
+  "menu_publish": "PUBLIER",
+
+  "menu_change": "Modifier",
+  "menu_pick_color": "Choisissez une couleur :",
+
+  "menu_day": "Jour",
+  "menu_clicks": "Clics",
+
+  "menu_year": "Année",
+  "menu_analytics_title": "Statistiques",
+  "menu_analytics_tooltip": "Consultez les performances du menu",
+  "menu_go_pro_to_unlock": "Passez à Pro pour débloquer",
+  "menu_go_premium_to_unlock": "Passez à Premium pour débloquer",
+  "menu_animation_title": "Animation",
+  "menu_animation_tooltip": "Choisissez l’animation d’ouverture du menu",
+
+  "menu_food": "Repas",
+
+  "menu_new_branch": "NOUVELLE SUCCURSALE",
+  "menu_branch_name_hint": "Entrez le nom de la succursale",
+  "menu_field_required": "Ce champ est requis",
+  "menu_branch_link_hint": "Entrez le lien de la succursale",
+  "menu_add_branch": "Ajouter une succursale",
+
+  "menu_country_branches_title": "SUCCURSALES/PAYS",
+  "menu_country_branches_tooltip": "Gérez les succursales par pays",
+
+  "menu_adding_new_country": "Ajout d’un nouveau pays",
+  "menu_add_new_country": "Ajouter un nouveau pays",
+
+  "menu_adding_branch": "Ajout d’une succursale",
+  "menu_country": "PAYS",
+  "menu_country_name": "NOM DU PAYS",
+  "menu_add_country": "Ajouter un pays",
+
+  "menu_add_review": "Ajouter votre avis",
+  "menu_write_review_hint": "Rédigez un avis (optionnel)",
+  "menu_preview_notice": "Ceci est un aperçu",
+  "menu_send_review": "Envoyer",
+
+  "menu_feedbacks_title": "AVIS",
+  "menu_feedbacks_tooltip": "Gérez les avis clients",
+
+  "menu_select_language": "Sélectionner une langue",
+  "menu_language_required": "Veuillez sélectionner une langue",
+  "menu_add_language": "Ajouter une langue",
+
+  "menu_languages_title": "LANGUES",
+  "menu_languages_tooltip": "Les offres Premium prennent en charge jusqu’à 6 langues",
+
+  "menu_main_language_locked": "La langue principale ne peut pas être supprimée",
+
+  "menu_open_close_hours_title": "HORAIRES D’OUVERTURE",
+  "menu_open_close_hours_tooltip": "Définissez vos horaires d’ouverture",
+
+  "menu_from": "De",
+  "menu_to": "À",
+  "menu_opening_time_for": "Heure d’ouverture pour",
+  "menu_closing_time_for": "Heure de fermeture pour",
+
+  "menu_social_media_title": "Réseaux sociaux",
+  "menu_social_media_tooltip": "Ajoutez vos liens sociaux",
+
+  "menu_add_link": "AJOUTER UN LIEN",
+  "menu_social_media_validation_hint": "Veuillez ajouter une icône et une URL",
+  "menu_link_url": "URL",
+  "menu_media_url_required": "L’URL est requise",
+  "menu_save_media": "Enregistrer",
+
+  "menu_badges": "Badges",
+  "menu_new_item": "NOUVEAU",
+  "menu_add_percentage_value": "Ajouter une valeur %",
+  "menu_image_carousel": "Carrousel d’images",
+  "menu_images": "Images",
+  "menu_prices": "Prix",
+  "menu_types": "Types",
+
+  "menu_cannot_leave_empty_fields": "Les champs ne peuvent pas être vides",
+  "menu_enter_price_label": "Saisissez le libellé du prix",
+  "menu_enter_price_amount": "Saisissez le prix",
+  "menu_add": "Ajouter",
+  "menu_edit_s": "Modifier",
+
+  "menu_item_images_overflow_warning": "Cet article contient trop d’images",
+
+  "menu_item_active": "Article actif",
+  "menu_item_inactive": "Article inactif",
+ "menu_active": "Actif",
+  "menu_inactive": "Inactif",
+
+  "menu_new": "NOUVEAU",
+  "menu_offer_b": "OFFRE",
+
+  "menu_item_required_fields": "Le nom, la description et le prix sont requis",
+
+  "menu_add_item_s": "Ajouter un article",
+  "menu_edit_item": "Modifier l’article",
+
+  "menu_item_order": "Ordre des articles",
+  "menu_title_cannot_be_empty": "Le titre ne peut pas être vide",
+  "menu_enter_type": "Saisissez le type",
+  "menu_background": "Arrière-plan",
+  "menu_add_type": "Ajouter un type",
+  "menu_edit_type": "Modifier le type"
+
+}
