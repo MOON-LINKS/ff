@@ -103,6 +103,12 @@ abstract class AppLocalizations {
   /// **'Language'**
   String get language_title;
 
+  /// No description provided for @no_news.
+  ///
+  /// In en, this message translates to:
+  /// **'No news available right now'**
+  String get no_news;
+
   /// No description provided for @services.
   ///
   /// In en, this message translates to:
@@ -792,6 +798,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'PAY NOW'**
   String get pay_now;
+
+  /// No description provided for @past_due.
+  ///
+  /// In en, this message translates to:
+  /// **'Recharge required: your plan is past due and has insufficient credits or auto-renew is off.'**
+  String get past_due;
+
+  /// No description provided for @recharge.
+  ///
+  /// In en, this message translates to:
+  /// **'Recharge'**
+  String get recharge;
+
+  /// No description provided for @resubscribe.
+  ///
+  /// In en, this message translates to:
+  /// **'Resubscribe'**
+  String get resubscribe;
+
+  /// No description provided for @apple_pay_disabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Apple Pay support is currently under development. Please use the web payment method.'**
+  String get apple_pay_disabled;
+
+  /// No description provided for @upgrade_now_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Upgrade Now?'**
+  String get upgrade_now_title;
+
+  /// No description provided for @upgrade_now_description.
+  ///
+  /// In en, this message translates to:
+  /// **'This will use your current card on file to directly upgrade your plan.'**
+  String get upgrade_now_description;
+
+  /// No description provided for @choose_language.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose Language'**
+  String get choose_language;
+
+  /// No description provided for @delete_account_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Account'**
+  String get delete_account_button;
+
+  /// No description provided for @delete_account_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Account?'**
+  String get delete_account_title;
+
+  /// No description provided for @delete_account_warning.
+  ///
+  /// In en, this message translates to:
+  /// **'This action is irreversible. All your subscriptions will be cancelled and your account will be permanently deactivated.'**
+  String get delete_account_warning;
+
+  /// No description provided for @delete_account_confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes, Delete'**
+  String get delete_account_confirm;
+
+  /// No description provided for @delete_account_error.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong. Please try again.'**
+  String get delete_account_error;
 
   /// No description provided for @menu_delete_subcategory.
   ///

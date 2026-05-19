@@ -12,6 +12,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get language_title => 'Langue';
 
   @override
+  String get no_news => 'Aucune actualité disponible pour le moment';
+
+  @override
   String get services => 'SERVICES';
 
   @override
@@ -355,6 +358,42 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get pay_now => 'PAYER MAINTENANT';
+
+  @override
+  String get past_due => 'Recharge requise : abonnement en retard, crédits insuffisants ou renouvellement auto désactivé.';
+
+  @override
+  String get recharge => 'Recharger';
+
+  @override
+  String get resubscribe => 'Se réabonner';
+
+  @override
+  String get apple_pay_disabled => 'La prise en charge d’Apple Pay est actuellement en cours de développement. Veuillez utiliser le paiement via le web.';
+
+  @override
+  String get upgrade_now_title => 'Mettre à niveau maintenant ?';
+
+  @override
+  String get upgrade_now_description => 'Votre carte actuelle sera utilisée pour mettre à niveau votre abonnement immédiatement.';
+
+  @override
+  String get choose_language => 'Choisir la langue';
+
+  @override
+  String get delete_account_button => 'Supprimer le compte';
+
+  @override
+  String get delete_account_title => 'Supprimer le compte ?';
+
+  @override
+  String get delete_account_warning => 'Cette action est irréversible. Tous vos abonnements seront annulés et votre compte sera définitivement désactivé.';
+
+  @override
+  String get delete_account_confirm => 'Oui, supprimer';
+
+  @override
+  String get delete_account_error => 'Une erreur s\'est produite. Veuillez réessayer.';
 
   @override
   String get menu_delete_subcategory => 'Supprimer la sous-catégorie ?';

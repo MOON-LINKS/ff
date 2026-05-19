@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:moonlinks/api/auth_service.dart';
@@ -59,7 +62,7 @@ class _CartContainerState extends ConsumerState<CartContainer> {
         );
         return;
       }
-      final response = await Pay().createCheckout(prices, user['user']['cred']);
+      final response = await Pay().createCheckout(prices);
       final url = response.data['url'];
 
       openExternalUrl(context, url);
@@ -121,7 +124,7 @@ class _CartContainerState extends ConsumerState<CartContainer> {
                           spacing: 20,
                           children: [
                             Text(
-                              item['price'],
+                              "\$ ${item['price']}",
                               style: TextStyle(color: Colors.black),
                             ),
                             ElevatedButton(
@@ -158,7 +161,17 @@ class _CartContainerState extends ConsumerState<CartContainer> {
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.purple),
-                        onPressed: payNow,
+                        onPressed: kIsWeb
+                            ? payNow
+                            : (Platform.isIOS
+                                ? () {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                            content: Text(
+                                                AppLocalizations.of(context)!
+                                                    .apple_pay_disabled)));
+                                  }
+                                : payNow),
                         child: Text(
                           AppLocalizations.of(context)!.pay_now,
                           style: TextStyle(

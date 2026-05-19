@@ -1,6 +1,7 @@
 {
   "language_title": "Langue",
   "services": "SERVICES",
+  "no_news":"Aucune actualité disponible pour le moment",
   "best_services_for_you": "MEILLEURS SERVICES POUR VOUS",
   "menu": "MENU",
   "generator": "GÉNÉRATEUR",
@@ -137,8 +138,20 @@
   "no_added_service": "Aucun service ajouté",
   "cart": "Panier",
   "pay_now": "PAYER MAINTENANT",
+  "past_due":"Recharge requise : abonnement en retard, crédits insuffisants ou renouvellement auto désactivé.",
+  "recharge": "Recharger",
+  "resubscribe": "Se réabonner",
+  "apple_pay_disabled": "La prise en charge d’Apple Pay est actuellement en cours de développement. Veuillez utiliser le paiement via le web.",
+  "upgrade_now_title": "Mettre à niveau maintenant ?",
+  "upgrade_now_description": "Votre carte actuelle sera utilisée pour mettre à niveau votre abonnement immédiatement.",
+  "choose_language": "Choisir la langue",
+"delete_account_button": "Supprimer le compte",
+"delete_account_title": "Supprimer le compte ?",
+"delete_account_warning": "Cette action est irréversible. Tous vos abonnements seront annulés et votre compte sera définitivement désactivé.",
+"delete_account_confirm": "Oui, supprimer",
+"delete_account_error": "Une erreur s'est produite. Veuillez réessayer.",
 
-  
+
   "menu_delete_subcategory": "Supprimer la sous-catégorie ?",
   "menu_delete_subcategory_message": "Êtes-vous sûr de vouloir supprimer cette sous-catégorie ? Tous les éléments qu’elle contient seront également supprimés.",
   "menu_delete": "Supprimer",

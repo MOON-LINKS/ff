@@ -230,7 +230,7 @@ class _ZTestState extends State<ZTest> with TickerProviderStateMixin {
 //advanced scroll trigger
 //AIM is to create a reuasble scroll trigger
 //code that will be called:
-
+/* 
 import 'package:flutter/material.dart';
 
 class ScrollTrigger extends StatefulWidget {
@@ -307,5 +307,239 @@ class _ZTestState extends State<ZTest> {
         Container(height: 1000),
       ]);
     });
+  }
+}
+ */
+
+//HERO ANIMATION
+/* import 'package:flutter/material.dart';
+
+class ZTest extends StatelessWidget {
+  const ZTest({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const PageB()),
+            );
+          },
+          child: Hero(
+            tag: "box",
+            child: Container(
+              width: 100,
+              height: 100,
+              color: Colors.purple,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class PageB extends StatelessWidget {
+  const PageB({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+          child: GestureDetector(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: Hero(
+          tag: "box",
+          child: Container(
+            width: 300,
+            height: 300,
+            color: Colors.purple,
+            child: Column(
+              children: [
+                Center(
+                  child: Text(
+                    'hello \n welcome back',
+                    style: TextStyle(
+                        fontSize: 10,
+                        color: Colors.white,
+                        decoration: TextDecoration.none),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      )),
+    );
+  }
+}
+ */
+//overall page trabsition:
+/*
+Navigator.push(
+  context,
+  PageRouteBuilder(
+    pageBuilder: (_, animation, secondaryAnimation) => const PageB(),
+
+    transitionsBuilder: (_, animation, secondaryAnimation, child) {
+      return SlideTransition(
+        position: Tween(
+          begin: const Offset(0, 1),
+          end: Offset.zero,
+        ).animate(animation),
+
+        child: child,
+      );
+    },
+  ),
+);
+*/
+//TEST PAGE
+import 'package:flutter/material.dart';
+
+class ZTest extends StatefulWidget {
+  const ZTest({Key? key}) : super(key: key);
+
+  @override
+  _ZTestState createState() => _ZTestState();
+}
+
+class _ZTestState extends State<ZTest> with SingleTickerProviderStateMixin {
+  late AnimationController animation;
+  late Animation<double> scale;
+  late Animation<double> fade;
+  final scroll = ScrollController();
+  double progress = 0;
+  final dynamic cards = [Card(0), Card(1), Card(2), Card(3)];
+
+  @override
+  void initState() {
+    super.initState();
+    animation =
+        AnimationController(vsync: this, duration: const Duration(seconds: 5));
+    scale = Tween<double>(begin: .5, end: 1).animate(CurvedAnimation(
+        parent: animation, curve: Interval(0, 1, curve: Curves.bounceIn)));
+    fade = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+        parent: animation, curve: Interval(0.0, 1, curve: Curves.bounceIn)));
+    scroll.addListener(() {
+      setState(() {
+        progress = (scroll.offset / 300).clamp(0.0, 1.0);
+      });
+    });
+    animation.forward();
+  }
+
+  @override
+  void dispose() {
+    animation.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+        animation: animation,
+        builder: (context, child) {
+          return Transform.scale(
+              scale: scale.value,
+              child: ListView(
+                controller: scroll,
+                children: cards.map((el, index) {
+                  return cards[index];
+                }).toList(),
+              ));
+        });
+  }
+}
+
+class Page2 extends StatefulWidget {
+  final int index;
+  const Page2(this.index);
+
+  @override
+  Page2State createState() => Page2State();
+}
+
+class Page2State extends State<Page2> {
+  @override
+  Widget build(BuildContext context) {
+    return Hero(
+        tag: widget.index.toString(),
+        child: Container(
+          decoration: BoxDecoration(
+              border:
+                  Border.all(color: Color.fromARGB(255, 0, 255, 13), width: 2),
+              borderRadius: BorderRadius.circular(20)),
+          child: Column(
+            children: [
+              Container(
+                  width: 400,
+                  height: 200,
+                  color: Color.fromARGB(255, 62, 62, 248)),
+              Text('test title',
+                  style: TextStyle(
+                      fontSize: 20, color: Color.fromARGB(255, 255, 255, 255))),
+              Text('test subtitle',
+                  style: TextStyle(
+                      fontSize: 18, color: Color.fromARGB(255, 255, 255, 255))),
+              ElevatedButton(
+                  onPressed: () {
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(SnackBar(content: Text('test btn')));
+                  },
+                  child: Text('test subtitle')),
+            ],
+          ),
+        ));
+  }
+}
+
+class Card extends StatelessWidget {
+  final int index;
+  const Card(this.index);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => Page2(index)));
+      },
+      child: Hero(
+          tag: index.toString(),
+          child: Container(
+            decoration: BoxDecoration(
+                border:
+                    Border.all(color: Color.fromARGB(255, 0, 0, 255), width: 2),
+                borderRadius: BorderRadius.circular(20)),
+            child: Column(
+              children: [
+                Container(
+                    width: 200,
+                    height: 100,
+                    color: Color.fromARGB(255, 62, 62, 248)),
+                Text('test title',
+                    style: TextStyle(
+                        fontSize: 15,
+                        color: Color.fromARGB(255, 255, 255, 255))),
+                Text('test subtitle',
+                    style: TextStyle(
+                        fontSize: 12,
+                        color: Color.fromARGB(255, 255, 255, 255))),
+                ElevatedButton(
+                    onPressed: () {
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(SnackBar(content: Text('test btn')));
+                    },
+                    child: Text('test subtitle')),
+              ],
+            ),
+          )),
+    );
   }
 }

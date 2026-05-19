@@ -76,57 +76,69 @@ class _MyServicesState extends ConsumerState<MyServices> {
                                 height: 20,
                               ),
                               ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => MenuMain(
-                                                  subscribedServiceId: plan[
-                                                      'subscribedserviceId'],
-                                                )));
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 8, vertical: 10),
-                                      backgroundColor: const Color.fromARGB(
-                                          255, 230, 88, 255),
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadiusGeometry.circular(
-                                                  30))),
-                                  child: Text(
-                                    AppLocalizations.of(context)!.workspace,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 20),
-                                  )),
+                                onPressed: () {
+                                  plan['is_active'] == 1
+                                      ? Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => MenuMain(
+                                                    subscribedServiceId: plan[
+                                                        'subscribedserviceId'],
+                                                  )))
+                                      : ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                              content: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .past_due)));
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 8, vertical: 10),
+                                    backgroundColor:
+                                        const Color.fromARGB(255, 230, 88, 255),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadiusGeometry.circular(30))),
+                                child: Text(
+                                  AppLocalizations.of(context)!.workspace,
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 20),
+                                ),
+                              ),
                               const SizedBox(height: 10),
-                              Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    CustomMenuButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            planChosen = plan;
-                                            isOpen = true;
-                                          });
-                                        },
-                                        child: AppLocalizations.of(context)!
-                                            .upgrade_plan),
-                                    const SizedBox(width: 10),
-                                    CustomMenuButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            cancelOpen = !cancelOpen;
-                                          });
-                                        },
-                                        child: cancelOpen
-                                            ? AppLocalizations.of(context)!
-                                                .less_info
-                                            : AppLocalizations.of(context)!
-                                                .more_info),
-                                  ]),
+                              plan['is_active'] == 1
+                                  ? Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                          CustomMenuButton(
+                                              onPressed: () {
+                                                setState(() {
+                                                  planChosen = plan;
+                                                  isOpen = true;
+                                                });
+                                              },
+                                              child:
+                                                  AppLocalizations.of(context)!
+                                                      .upgrade_plan),
+                                          const SizedBox(width: 10),
+                                          CustomMenuButton(
+                                              onPressed: () {
+                                                setState(() {
+                                                  cancelOpen = !cancelOpen;
+                                                });
+                                              },
+                                              child: cancelOpen
+                                                  ? AppLocalizations.of(
+                                                          context)!
+                                                      .less_info
+                                                  : AppLocalizations.of(
+                                                          context)!
+                                                      .more_info),
+                                        ])
+                                  : const SizedBox.shrink(),
                               const SizedBox(height: 10),
                               cancelOpen
                                   ? Row(
@@ -175,6 +187,24 @@ class _MyServicesState extends ConsumerState<MyServices> {
                                                 inactiveTrackColor: Colors.grey,
                                               ))
                                         ])
+                                  : const SizedBox.shrink(),
+                              plan['is_active'] == 0
+                                  ? plan['is_cancelled'] == 0
+                                      ? CustomMenuButton(
+                                          child: AppLocalizations.of(context)!
+                                              .recharge,
+                                          onPressed: () async {
+                                            final response = await paymentAPI
+                                                .rechargeService(plan[
+                                                    'subscribedserviceId']);
+                                            print(response['message']);
+                                          })
+                                      : CustomMenuButton(
+                                          child: AppLocalizations.of(context)!
+                                              .resubscribe,
+                                          onPressed: () {
+                                            //resubscribe logic
+                                          })
                                   : const SizedBox.shrink(),
                               plan['name']
                                           .toString()

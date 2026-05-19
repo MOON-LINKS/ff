@@ -75,16 +75,19 @@ class _UpgradableState extends ConsumerState<Upgradable> {
     return Positioned.fill(
         child: Center(
       child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 20),
         decoration: const BoxDecoration(
-          color: Color.fromARGB(153, 158, 158, 158),
+          color: Color.fromARGB(209, 158, 158, 158),
         ),
         child: Center(
           child: Column(
             children: [
+              const SizedBox(height: 25),
               CustomMenuButton(
                 onPressed: widget.close,
                 child: AppLocalizations.of(context)!.close,
               ),
+              const SizedBox(height: 25),
               if (_loading)
                 const Padding(
                   padding: EdgeInsets.all(20),
@@ -118,29 +121,67 @@ class _UpgradableState extends ConsumerState<Upgradable> {
                           title: Text(plan['name']),
                           subtitle: Text('\$${plan['price']}'),
                           trailing: Column(children: [
-                            ElevatedButton(
+                            CustomMenuButton(
                               onPressed: () async {
-                                try {
-                                  final response = await payAPI.upgradePlan(
-                                      widget.plan['subscribedserviceId'],
-                                      plan['id'],
-                                      widget
-                                          .plan['stripe_subscription_item_id'],
-                                      plan['stripe_price_id'],
-                                      priceToPay);
-                                  if (response['success'] == true) {
-                                    final token = await readToken();
-                                    if (token != null) {
-                                      updateSubServices(ref, token);
-                                    }
-                                  }
-                                  widget.close();
-                                } catch (e) {
-                                  debugPrint('Upgrade failed: $e');
-                                }
+                                showDialog(
+                                    context: context,
+                                    builder: (_) => AlertDialog(
+                                          backgroundColor: Colors.black,
+                                          title: Text(
+                                            AppLocalizations.of(context)!
+                                                .upgrade_now_title,
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
+                                          content: Text(
+                                              AppLocalizations.of(context)!
+                                                  .upgrade_now_description),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () =>
+                                                  Navigator.pop(context),
+                                              child: Text(
+                                                AppLocalizations.of(context)!
+                                                    .cancel,
+                                                style: TextStyle(
+                                                    color: Colors.white),
+                                              ),
+                                            ),
+                                            CustomMenuButton(
+                                                onPressed: () async {
+                                                  try {
+                                                    final response =
+                                                        await payAPI.upgradePlan(
+                                                            widget.plan[
+                                                                'subscribedserviceId'],
+                                                            plan['id'],
+                                                            widget.plan[
+                                                                'stripe_subscription_item_id'],
+                                                            plan[
+                                                                'stripe_price_id'],
+                                                            priceToPay);
+                                                    if (response['success'] ==
+                                                        true) {
+                                                      final token =
+                                                          await readToken();
+                                                      if (token != null) {
+                                                        updateSubServices(
+                                                            ref, token);
+                                                      }
+                                                    }
+                                                    widget.close();
+                                                  } catch (e) {
+                                                    debugPrint(
+                                                        'Upgrade failed: $e');
+                                                  }
+                                                },
+                                                child: AppLocalizations.of(
+                                                        context)!
+                                                    .upgrade)
+                                          ],
+                                        ));
                               },
-                              child:
-                                  Text(AppLocalizations.of(context)!.upgrade),
+                              child: AppLocalizations.of(context)!.upgrade,
                             ),
                             Text(
                                 '${AppLocalizations.of(context)!.you_have_to_pay_more}: \$${priceToPay.toString()}')

@@ -12,6 +12,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get language_title => 'اللغة';
 
   @override
+  String get no_news => 'لا توجد أخبار متاحة حالياً';
+
+  @override
   String get services => 'الخدمات';
 
   @override
@@ -355,6 +358,42 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get pay_now => 'ادفع الآن';
+
+  @override
+  String get past_due => 'إعادة الشحن مطلوبة: لقد انتهت صلاحية خطتك ولا توجد أرصدة كافية أو أن التجديد التلقائي متوقف.';
+
+  @override
+  String get recharge => 'إعادة الشحن';
+
+  @override
+  String get resubscribe => 'إعادة الاشتراك';
+
+  @override
+  String get apple_pay_disabled => 'دعم Apple Pay قيد التطوير حالياً. يرجى استخدام الدفع عبر الويب.';
+
+  @override
+  String get upgrade_now_title => 'الترقية الآن؟';
+
+  @override
+  String get upgrade_now_description => 'سيتم استخدام بطاقتك الحالية لترقية خطتك مباشرةً.';
+
+  @override
+  String get choose_language => 'اختر اللغة';
+
+  @override
+  String get delete_account_button => 'حذف الحساب';
+
+  @override
+  String get delete_account_title => 'حذف الحساب؟';
+
+  @override
+  String get delete_account_warning => 'هذا الإجراء لا يمكن التراجع عنه. سيتم إلغاء جميع اشتراكاتك وتعطيل حسابك نهائياً.';
+
+  @override
+  String get delete_account_confirm => 'نعم، احذف';
+
+  @override
+  String get delete_account_error => 'حدث خطأ ما. يرجى المحاولة مرة أخرى.';
 
   @override
   String get menu_delete_subcategory => 'حذف التصنيف الفرعي؟';

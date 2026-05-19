@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moonlinks/elements/delete_account.dart';
 import 'package:moonlinks/elements/gradient.dart';
 import 'package:moonlinks/elements/language_selector.dart';
 import 'package:moonlinks/functions/secure_storage.dart';
@@ -46,7 +47,10 @@ class _ProfileState extends State<Profile> {
                             (token != null && token!.isNotEmpty
                                 ? Logged()
                                 : NotLogged()),
-                            LanguageSelector()
+                            LanguageSelector(),
+                            token != null && token!.isNotEmpty
+                                ? DeleteAccount()
+                                : const SizedBox.shrink()
                           ],
                         ),
                       )))),

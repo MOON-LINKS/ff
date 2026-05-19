@@ -12,6 +12,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get language_title => 'Language';
 
   @override
+  String get no_news => 'No news available right now';
+
+  @override
   String get services => 'SERVICES';
 
   @override
@@ -355,6 +358,42 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pay_now => 'PAY NOW';
+
+  @override
+  String get past_due => 'Recharge required: your plan is past due and has insufficient credits or auto-renew is off.';
+
+  @override
+  String get recharge => 'Recharge';
+
+  @override
+  String get resubscribe => 'Resubscribe';
+
+  @override
+  String get apple_pay_disabled => 'Apple Pay support is currently under development. Please use the web payment method.';
+
+  @override
+  String get upgrade_now_title => 'Upgrade Now?';
+
+  @override
+  String get upgrade_now_description => 'This will use your current card on file to directly upgrade your plan.';
+
+  @override
+  String get choose_language => 'Choose Language';
+
+  @override
+  String get delete_account_button => 'Delete Account';
+
+  @override
+  String get delete_account_title => 'Delete Account?';
+
+  @override
+  String get delete_account_warning => 'This action is irreversible. All your subscriptions will be cancelled and your account will be permanently deactivated.';
+
+  @override
+  String get delete_account_confirm => 'Yes, Delete';
+
+  @override
+  String get delete_account_error => 'Something went wrong. Please try again.';
 
   @override
   String get menu_delete_subcategory => 'Delete Subcategory?';

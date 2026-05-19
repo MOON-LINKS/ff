@@ -38,8 +38,9 @@ class _HomeState extends State<Home> {
       return Scaffold(
           body: RadialBackground(
         child: Center(
-            child: CircularProgressIndicator(
-          color: Colors.white,
+            child: Text(
+          AppLocalizations.of(context)!.no_news,
+          style: TextStyle(color: Colors.white, fontSize: 20),
         )),
       ));
     }
@@ -48,9 +49,9 @@ class _HomeState extends State<Home> {
         child: Padding(
             padding:
                 EdgeInsets.symmetric(horizontal: getResponsivePadding(context)),
-            child: /* Center(
-              child: ZTest(),
-            ) */
+            child: /*  Center(
+                child: ZTest(),
+              )) */
 
                 ListView(
               children: [

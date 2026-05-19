@@ -1,12 +1,18 @@
+import 'package:dio/dio.dart';
+import 'package:moonlinks/functions/secure_storage.dart';
+
 import './dio_client.dart';
 
 class Pay {
   final dio = DioClient.dio;
-  Future<dynamic> createCheckout(
-      List<String> items, String customerEmail) async {
+  Future<dynamic> createCheckout(List<String> items) async {
     try {
+      final token = await readToken();
       final response = dio.post('/payment/create-checkout',
-          data: {'items': items, 'customerEmail': customerEmail});
+          options: Options(
+            headers: {'Authorization': 'Bearer $token'},
+          ),
+          data: {'items': items});
       return response;
     } catch (e) {
       throw Exception('error: $e');
@@ -41,6 +47,36 @@ class Pay {
         'newStripePriceId': newStripePriceId,
         'priceToPay': priceToPay
       });
+      return response.data;
+    } catch (e) {
+      throw Exception('error: $e');
+    }
+  }
+
+  Future<dynamic> rechargeService(int subscribedserviceId) async {
+    try {
+      final token = await readToken();
+
+      final response = await dio.post('/payment/recharge-service',
+          options: Options(
+            headers: {'Authorization': 'Bearer $token'},
+          ),
+          data: {
+            'subscribedServiceId': subscribedserviceId,
+          });
+      return response.data;
+    } catch (e) {
+      throw Exception('error: $e');
+    }
+  }
+
+  Future<dynamic> deleteAccount() async {
+    try {
+      final token = await readToken();
+      final response = await dio.delete('/payment/delete-account',
+          options: Options(
+            headers: {'Authorization': 'Bearer $token'},
+          ));
       return response.data;
     } catch (e) {
       throw Exception('error: $e');

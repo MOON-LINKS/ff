@@ -92,7 +92,7 @@ class _LanguageSelectorState extends ConsumerState<LanguageSelector> {
                   ),
                 );
               },
-              name: "Choose Language"),
+              name: AppLocalizations.of(context)!.choose_language),
         ]));
   }
 }
