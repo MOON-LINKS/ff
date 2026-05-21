@@ -396,6 +396,30 @@ class AppLocalizationsAr extends AppLocalizations {
   String get delete_account_error => 'حدث خطأ ما. يرجى المحاولة مرة أخرى.';
 
   @override
+  String get recharge_plan => 'تجديد الاشتراك';
+
+  @override
+  String get already_have_active_plan => 'لديك خطة نشطة بالفعل.';
+
+  @override
+  String get recharge_confirm_title => 'تجديد الاشتراك؟';
+
+  @override
+  String get recharge_confirm_description => 'سيتم خصم المبلغ من بطاقتك المسجلة فوراً لإعادة تفعيل اشتراكك.';
+
+  @override
+  String get recharge_confirm_button => 'نعم، جدّد';
+
+  @override
+  String get manage_payment_methods => 'إدارة طرق الدفع';
+
+  @override
+  String get add_on_updated_successfully => 'تم تحديث الإضافة بنجاح.';
+
+  @override
+  String get subscribe_via_web => 'للاشتراك أو إدارة خطتك، يرجى زيارة app.moonlinks.me من متصفحك.';
+
+  @override
   String get menu_delete_subcategory => 'حذف التصنيف الفرعي؟';
 
   @override

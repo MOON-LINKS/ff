@@ -151,6 +151,15 @@
 "delete_account_warning": "هذا الإجراء لا يمكن التراجع عنه. سيتم إلغاء جميع اشتراكاتك وتعطيل حسابك نهائياً.",
 "delete_account_confirm": "نعم، احذف",
 "delete_account_error": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+"recharge_plan": "تجديد الاشتراك",
+"already_have_active_plan": "لديك خطة نشطة بالفعل.",
+
+"recharge_confirm_title": "تجديد الاشتراك؟",
+"recharge_confirm_description": "سيتم خصم المبلغ من بطاقتك المسجلة فوراً لإعادة تفعيل اشتراكك.",
+"recharge_confirm_button": "نعم، جدّد",
+"manage_payment_methods": "إدارة طرق الدفع",
+"add_on_updated_successfully": "تم تحديث الإضافة بنجاح.",
+"subscribe_via_web": "للاشتراك أو إدارة خطتك، يرجى زيارة app.moonlinks.me من متصفحك.",
 
   "menu_delete_subcategory": "حذف التصنيف الفرعي؟",
   "menu_delete_subcategory_message": "هل أنت متأكد أنك تريد حذف هذا التصنيف الفرعي؟ سيتم أيضًا حذف جميع العناصر داخله.",

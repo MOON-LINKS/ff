@@ -82,4 +82,17 @@ class Pay {
       throw Exception('error: $e');
     }
   }
+
+  Future<dynamic> managePaymentMethods() async {
+    try {
+      final token = await readToken();
+      final response = await dio.get('/payment/manage-payments',
+          options: Options(
+            headers: {'Authorization': 'Bearer $token'},
+          ));
+      return response.data;
+    } catch (e) {
+      throw Exception('error: $e');
+    }
+  }
 }

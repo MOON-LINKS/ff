@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:moonlinks/api/service.dart';
@@ -62,18 +65,20 @@ class MenuState extends ConsumerState<Menu> {
 
     ServiceStatus getServiceStatus() {
       final isSubscribed = subscribedServices.any((s) =>
-          s['name']
-              .toString()
-              .toLowerCase()
-              .contains('Menu Generator'.toString().toLowerCase()) &&
+          s['name'].toString().toLowerCase().contains('menu generator') &&
           s['is_active'] == 1);
 
       if (isSubscribed) return ServiceStatus.subscribed;
 
+      final needsRecharge = subscribedServices.any((s) =>
+          s['name'].toString().toLowerCase().contains('menu generator') &&
+          s['is_active'] == 0 &&
+          s['is_cancelled'] == 0);
+      if (needsRecharge) return ServiceStatus.recharge;
+
       if (cartServiceCodes.contains('menu_generator')) {
         return ServiceStatus.added;
       }
-
       return ServiceStatus.available;
     }
 
@@ -88,6 +93,9 @@ class MenuState extends ConsumerState<Menu> {
         break;
       case ServiceStatus.subscribed:
         text = AppLocalizations.of(context)!.you_are_subscribed_to_this_plan;
+        break;
+      case ServiceStatus.recharge:
+        text = AppLocalizations.of(context)!.recharge_plan;
         break;
     }
     return Scaffold(
@@ -237,19 +245,30 @@ class MenuState extends ConsumerState<Menu> {
                                     const CircularProgressIndicator(
                                         color: Colors.white),
                                   ])
-                                : filteredPlans.map<Widget>((plan) {
-                                    return PriceCard(
-                                      planType: plan['plan_type']
-                                          .toString()
-                                          .toUpperCase(),
-                                      price: plan['price'],
-                                      duration: plan['duration_type'],
-                                      isAvailable: text == '',
-                                      addToCart: () {
-                                        addToCart(plan);
-                                      },
-                                    );
-                                  }).toList(),
+                                : (kIsWeb || !Platform.isIOS)
+                                    ? filteredPlans.map<Widget>((plan) {
+                                        return PriceCard(
+                                          planType: plan['plan_type']
+                                              .toString()
+                                              .toUpperCase(),
+                                          price: plan['price'],
+                                          duration: plan['duration_type'],
+                                          isAvailable: text == '',
+                                          addToCart: () {
+                                            addToCart(plan);
+                                          },
+                                        );
+                                      }).toList()
+                                    : [
+                                        Text(
+                                          AppLocalizations.of(context)!
+                                              .subscribe_via_web,
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 16),
+                                        )
+                                      ],
                           ),
                           LearnService(
                               text: AppLocalizations.of(context)!

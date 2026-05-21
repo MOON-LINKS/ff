@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:moonlinks/api/auth_service.dart';
+import 'package:moonlinks/api/pay.dart';
 import 'package:moonlinks/functions/secure_storage.dart';
 import 'package:moonlinks/l10n/app_localizations.dart';
 import 'package:moonlinks/main.dart';
 import 'package:moonlinks/menu/utils/menu_provider.dart';
 import 'package:moonlinks/utils/cart_riverpod.dart';
 import 'package:moonlinks/utils/subscribed_services_riverpod.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../style/style.dart';
 import '../../elements/input.dart';
 import '../../elements/button.dart';
@@ -19,6 +21,7 @@ class Logged extends ConsumerStatefulWidget {
 
 class _LoggedState extends ConsumerState<Logged> {
   final authService = AuthService();
+  final paymentAPI = Pay();
   late TextEditingController nameController;
   late TextEditingController credController;
   int session = 0;
@@ -99,85 +102,41 @@ class _LoggedState extends ConsumerState<Logged> {
                 readOnly: true,
                 type: InputType.email,
                 controller: credController),
-            /* CustomInput( label: "Password", readOnly: true, type: InputType.password, controller: ), */
             CustomButton(
                 function: logout, name: AppLocalizations.of(context)!.logout),
+            const SizedBox(height: 15),
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.purple,
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+              ),
+              icon: const Icon(Icons.credit_card),
+              label: Text(AppLocalizations.of(context)!.manage_payment_methods),
+              onPressed: () async {
+                try {
+                  final response = await paymentAPI.managePaymentMethods();
+                  final url = Uri.parse(response['url']);
+                  if (await canLaunchUrl(url)) {
+                    await launchUrl(url, mode: LaunchMode.externalApplication);
+                  }
+                } catch (e) {
+                  if (context.mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text(
+                          AppLocalizations.of(context)!.delete_account_error),
+                      backgroundColor: Colors.red,
+                    ));
+                  }
+                }
+              },
+            ),
           ],
         ),
       ),
-      /* AnimatedPositioned(
-          duration: const Duration(milliseconds: 300),
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: _isExpanded ? screenHeight * .4 : 60,
-          child: GestureDetector(
-              onTap: () => setState(() {
-                    _isExpanded = !_isExpanded;
-                  }),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.purple,
-                  borderRadius:
-                      const BorderRadius.vertical(top: Radius.circular(20)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 5,
-                      spreadRadius: 2,
-                    ),
-                  ],
-                ),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      spacing: 30,
-                      children: [
-                        const Text(
-                          "Sessions",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18),
-                        ),
-                        Row(children: [
-                          Text(
-                            session.toString(),
-                            style: TextStyle(color: Colors.white, fontSize: 16),
-                          ),
-                           const SizedBox(width: 10),
-                          Transform.rotate(
-                            angle: _isExpanded ? 3.14 : 0,
-                            child: const Icon(
-                              Icons.keyboard_arrow_up,
-                              color: Colors.white,
-                              size: 30,
-                            ),
-                          ), 
-                        ]),
-                      ],
-                    ),*/
-      /*   if (_isExpanded)
-                      Expanded(
-                        child: ListView(
-                          children: List.generate(
-                              10,
-                              (index) => ListTile(
-                                    title: Text(
-                                      "Session ${index + 1}",
-                                      style:
-                                          const TextStyle(color: Colors.white),
-                                    ),
-                                  )),
-                        ),
-                      ), 
-                  ],
-                ),
-              )))*/
     ]);
   }
 }

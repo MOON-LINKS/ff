@@ -871,6 +871,54 @@ abstract class AppLocalizations {
   /// **'Something went wrong. Please try again.'**
   String get delete_account_error;
 
+  /// No description provided for @recharge_plan.
+  ///
+  /// In en, this message translates to:
+  /// **'Recharge Plan'**
+  String get recharge_plan;
+
+  /// No description provided for @already_have_active_plan.
+  ///
+  /// In en, this message translates to:
+  /// **'You already have an active plan.'**
+  String get already_have_active_plan;
+
+  /// No description provided for @recharge_confirm_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Recharge Plan?'**
+  String get recharge_confirm_title;
+
+  /// No description provided for @recharge_confirm_description.
+  ///
+  /// In en, this message translates to:
+  /// **'This will charge your card on file immediately to reactivate your plan.'**
+  String get recharge_confirm_description;
+
+  /// No description provided for @recharge_confirm_button.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes, Recharge'**
+  String get recharge_confirm_button;
+
+  /// No description provided for @manage_payment_methods.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage Payment Methods'**
+  String get manage_payment_methods;
+
+  /// No description provided for @add_on_updated_successfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Add-on updated successfully.'**
+  String get add_on_updated_successfully;
+
+  /// No description provided for @subscribe_via_web.
+  ///
+  /// In en, this message translates to:
+  /// **'To subscribe or manage your plan, please visit app.moonlinks.me from your browser.'**
+  String get subscribe_via_web;
+
   /// No description provided for @menu_delete_subcategory.
   ///
   /// In en, this message translates to:

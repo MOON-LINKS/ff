@@ -134,6 +134,15 @@
 "delete_account_warning": "This action is irreversible. All your subscriptions will be cancelled and your account will be permanently deactivated.",
 "delete_account_confirm": "Yes, Delete",
 "delete_account_error": "Something went wrong. Please try again.",
+"recharge_plan": "Recharge Plan",
+"already_have_active_plan": "You already have an active plan.",
+"recharge_confirm_title": "Recharge Plan?",
+"recharge_confirm_description": "This will charge your card on file immediately to reactivate your plan.",
+"recharge_confirm_button": "Yes, Recharge",
+"manage_payment_methods": "Manage Payment Methods",
+"add_on_updated_successfully": "Add-on updated successfully.",
+"subscribe_via_web": "To subscribe or manage your plan, please visit app.moonlinks.me from your browser.",
+
 
   "menu_delete_subcategory": "Delete Subcategory?",
   "menu_delete_subcategory_message": "Are you sure you want to delete this subcategory? All items inside it will also be deleted.",

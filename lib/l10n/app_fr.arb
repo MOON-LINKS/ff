@@ -150,6 +150,14 @@
 "delete_account_warning": "Cette action est irréversible. Tous vos abonnements seront annulés et votre compte sera définitivement désactivé.",
 "delete_account_confirm": "Oui, supprimer",
 "delete_account_error": "Une erreur s'est produite. Veuillez réessayer.",
+"recharge_plan": "Recharger l'abonnement",
+"already_have_active_plan": "Vous avez déjà un abonnement actif.",
+"recharge_confirm_title": "Recharger l'abonnement ?",
+"recharge_confirm_description": "Votre carte enregistrée sera débitée immédiatement pour réactiver votre abonnement.",
+"recharge_confirm_button": "Oui, recharger",
+"manage_payment_methods": "Gérer les moyens de paiement",
+"add_on_updated_successfully": "Module complémentaire mis à jour avec succès.",
+"subscribe_via_web": "Pour vous abonner ou gérer votre abonnement, veuillez visiter app.moonlinks.me depuis votre navigateur.",
 
 
   "menu_delete_subcategory": "Supprimer la sous-catégorie ?",

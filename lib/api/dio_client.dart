@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:moonlinks/functions/secure_storage.dart';
 
 class DioClient {
   static final Dio dio = Dio(
     BaseOptions(
-      //baseUrl: "http://localhost:3000/api",
-      baseUrl: "https://api.moonlinks.me/api",
+      baseUrl: "$link/api",
       connectTimeout: Duration(seconds: 5),
       receiveTimeout: Duration(seconds: 5),
       headers: {"Accept": "application/json"},

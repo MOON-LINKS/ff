@@ -15,10 +15,16 @@ class _AddOnsState extends State<AddOns> {
   final addOnMenu = ServiceAPI();
   dynamic addOn;
   void initializeAddOn() async {
-    final response = await addOnMenu.getMenuAddOns();
-    setState(() {
-      addOn = response['data'];
-    });
+    try {
+      final response = await addOnMenu.getMenuAddOns();
+      print(response);
+      setState(() {
+        addOn = response['data'];
+      });
+    } catch (e) {
+      debugPrint('AddOn load error: $e');
+      if (mounted) setState(() => addOn = {'quantity': 0});
+    }
   }
 
   @override
@@ -60,15 +66,6 @@ class _AddOnsState extends State<AddOns> {
                         style: TextStyle(color: Colors.black)),
                   ],
                 ),
-                /*  CustomMenuButton(
-                    onPressed: () {
-                      setState(() {
-                        isOpen = !isOpen;
-                      });
-                    },
-                    child: isOpen ? 'Close Add-On Viewer' : 'Edit Add-On Plan'), */
-                /* isOpen
-                    ? */
                 MenuAddOnCalculator(
                   quantity: (addOn['quantity'] ?? 0).toDouble(),
                   itemId: (addOn['stripe_payment_intent'] ?? '') as String,
@@ -79,7 +76,6 @@ class _AddOnsState extends State<AddOns> {
                     });
                   },
                 )
-                /*   : const SizedBox.shrink() */
               ],
             ))));
   }

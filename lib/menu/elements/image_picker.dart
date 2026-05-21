@@ -141,5 +141,4 @@ void hideLoader(BuildContext context) {
   Navigator.of(context, rootNavigator: true).pop();
 }
 
-//String customServerName = 'http://localhost:3000';
-String customServerName = 'https://api.moonlinks.me';
+String customServerName = link;

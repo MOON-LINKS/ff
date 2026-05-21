@@ -1,12 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:moonlinks/api/user.dart';
+import 'package:moonlinks/functions/secure_storage.dart';
 import 'package:moonlinks/utils/cart_riverpod.dart';
 import 'package:moonlinks/utils/subscribed_services_riverpod.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 void initSocket(String userId, WidgetRef ref, String token) {
-  //String baseUrl = "http://localhost:3000";
-  String baseUrl = "https://api.moonlinks.me";
+  String baseUrl = link;
   final socket = IO.io(baseUrl, <String, dynamic>{
     'transports': ['websocket'],
     'autoConnect': false

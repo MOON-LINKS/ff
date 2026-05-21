@@ -23,6 +23,7 @@ class MenuAddOnCalculator extends StatefulWidget {
 class _MenuAddOnCalculatorState extends State<MenuAddOnCalculator> {
   late double newQuantity;
   late String stripeItemId;
+  bool _isProcessing = false;
   final serviceAPI = ServiceAPI();
   final max = 10000.0;
   void newQuantityVal(double quantity, String itemId) {
@@ -34,37 +35,71 @@ class _MenuAddOnCalculatorState extends State<MenuAddOnCalculator> {
 
   void checkout(int qty, String itemId) async {
     if (widget.itemId == '' && widget.quantity == 0) {
-      final response = await serviceAPI.payMenuAddOns(qty);
-      final url = response['url'];
-      openExternalUrl(context, url);
+      try {
+        final response = await serviceAPI.payMenuAddOns(qty);
+        if (context.mounted) openExternalUrl(context, response['url']);
+      } catch (e) {
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(AppLocalizations.of(context)!.delete_account_error),
+            backgroundColor: Colors.red,
+          ));
+        }
+      }
     } else {
-      showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-                backgroundColor: Colors.black,
-                title: Text(AppLocalizations.of(context)!.confirm_add_on,
-                    style: TextStyle(color: Colors.white)),
-                content:
-                    Text(AppLocalizations.of(context)!.confirm_add_on_message),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                    child: Text(AppLocalizations.of(context)!.cancel,
-                        style: TextStyle(color: Colors.white)),
-                  ),
-                  ElevatedButton(
-                    onPressed: () async {
-                      Navigator.of(context).pop();
-                      final response =
-                          await serviceAPI.upgradeMenuAddOn(itemId, qty);
-                      final url = response['url'];
-                      openExternalUrl(context, url);
-                    }, // Confirm
-                    child: Text(AppLocalizations.of(context)!.continue_action,
-                        style: TextStyle(color: Colors.black)),
-                  ),
-                ],
-              ));
+      if (context.mounted) {
+        showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+                  backgroundColor: Colors.black,
+                  title: Text(AppLocalizations.of(context)!.confirm_add_on,
+                      style: TextStyle(color: Colors.white)),
+                  content: Text(
+                      AppLocalizations.of(context)!.confirm_add_on_message),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: Text(AppLocalizations.of(context)!.cancel,
+                          style: TextStyle(color: Colors.white)),
+                    ),
+                    ElevatedButton(
+                      onPressed: () async {
+                        Navigator.of(context).pop();
+                        try {
+                          final response =
+                              await serviceAPI.upgradeMenuAddOn(itemId, qty);
+                          if (response['url'] != null) {
+                            openExternalUrl(context, response['url']);
+                          } else {
+                            if (context.mounted) {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                content: Text(AppLocalizations.of(context)!
+                                    .add_on_updated_successfully),
+                                backgroundColor: Colors.green,
+                              ));
+                            }
+                          }
+                        } catch (e) {
+                          if (context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text(AppLocalizations.of(context)!
+                                  .delete_account_error),
+                              backgroundColor: Colors.red,
+                            ));
+                          }
+                        } finally {
+                          if (mounted) setState(() => _isProcessing = false);
+                        }
+                      },
+                      child: _isProcessing
+                          ? const CircularProgressIndicator(color: Colors.black)
+                          : Text(AppLocalizations.of(context)!.continue_action,
+                              style: TextStyle(color: Colors.black)),
+                    ),
+                  ],
+                ));
+      }
     }
   }
 

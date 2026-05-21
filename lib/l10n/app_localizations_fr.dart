@@ -396,6 +396,30 @@ class AppLocalizationsFr extends AppLocalizations {
   String get delete_account_error => 'Une erreur s\'est produite. Veuillez réessayer.';
 
   @override
+  String get recharge_plan => 'Recharger l\'abonnement';
+
+  @override
+  String get already_have_active_plan => 'Vous avez déjà un abonnement actif.';
+
+  @override
+  String get recharge_confirm_title => 'Recharger l\'abonnement ?';
+
+  @override
+  String get recharge_confirm_description => 'Votre carte enregistrée sera débitée immédiatement pour réactiver votre abonnement.';
+
+  @override
+  String get recharge_confirm_button => 'Oui, recharger';
+
+  @override
+  String get manage_payment_methods => 'Gérer les moyens de paiement';
+
+  @override
+  String get add_on_updated_successfully => 'Module complémentaire mis à jour avec succès.';
+
+  @override
+  String get subscribe_via_web => 'Pour vous abonner ou gérer votre abonnement, veuillez visiter app.moonlinks.me depuis votre navigateur.';
+
+  @override
   String get menu_delete_subcategory => 'Supprimer la sous-catégorie ?';
 
   @override

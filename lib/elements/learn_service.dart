@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moonlinks/functions/context_extension.dart';
 import '../web/webview_screen.dart';
 
 class LearnService extends StatelessWidget {
@@ -25,7 +26,8 @@ class LearnService extends StatelessWidget {
                   textAlign: TextAlign.center,
                   text)),
           Container(
-              width: double.infinity,
+              width:
+                  context.isWide ? context.screenWidth * .5 : double.infinity,
               decoration: BoxDecoration(
                   color: Colors.black,
                   borderRadius: BorderRadius.only(
@@ -79,12 +81,15 @@ class VideoLearn extends StatelessWidget {
               // Thumbnail
               Image.network(
                 maxRes,
-                width: double.infinity,
+                width:
+                    context.isWide ? context.screenWidth * .2 : double.infinity,
                 height: 200,
                 fit: BoxFit.cover,
                 errorBuilder: (_, __, ___) => Image.network(
                   fallback,
-                  width: double.infinity,
+                  width: context.isWide
+                      ? context.screenWidth * .2
+                      : double.infinity,
                   height: 200,
                   fit: BoxFit.cover,
                 ),
@@ -92,7 +97,8 @@ class VideoLearn extends StatelessWidget {
 
               // Optional dark overlay
               Container(
-                width: double.infinity,
+                width:
+                    context.isWide ? context.screenWidth * .2 : double.infinity,
                 height: 200,
                 color: const Color.fromARGB(103, 0, 0, 0),
               ),

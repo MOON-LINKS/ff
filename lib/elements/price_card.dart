@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:moonlinks/functions/context_extension.dart';
 import 'package:moonlinks/l10n/app_localizations.dart';
 
-enum ServiceStatus {
-  available,
-  added,
-  subscribed,
-}
+enum ServiceStatus { available, added, subscribed, recharge }
 
 class PriceCard extends StatefulWidget {
   final String planType;

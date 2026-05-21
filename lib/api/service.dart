@@ -54,7 +54,9 @@ class ServiceAPI {
 
   Future<dynamic> upgradeMenuAddOn(String stripeItemId, int newQty) async {
     try {
+      final token = await readToken();
       final response = await dio.post('/menu/add-ons-upgrade',
+          options: Options(headers: {'Authorization': 'Bearer $token'}),
           data: {"stripe_item_id": stripeItemId, "additionalQuantity": newQty});
       return response.data;
     } catch (e) {
