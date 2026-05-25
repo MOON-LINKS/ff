@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -129,113 +128,132 @@ class MenuState extends ConsumerState<Menu> {
                         ),
                       ),
                     ),
-                    Padding(
-                        padding: EdgeInsetsGeometry.symmetric(vertical: 40),
-                        child: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                border:
-                                    Border.all(color: Colors.white, width: 3),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30))),
-                            child: Padding(
-                              padding: EdgeInsetsGeometry.symmetric(
-                                  horizontal: 20, vertical: 10),
-                              child: Text(
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w900,
-                                      fontSize: 28),
-                                  AppLocalizations.of(context)!.plans),
-                            ))),
-                    Row(
-                      spacing: 10,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: timeClicked == "month"
-                                    ? Colors.purple
-                                    : Colors.transparent,
-                                shape: RoundedRectangleBorder(
-                                    side: BorderSide(
-                                        color: Colors.white,
-                                        width: timeClicked == "month" ? 3 : 2),
+                    (kIsWeb || !Platform.isIOS)
+                        ? Padding(
+                            padding: EdgeInsetsGeometry.symmetric(vertical: 40),
+                            child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.transparent,
+                                    border: Border.all(
+                                        color: Colors.white, width: 3),
                                     borderRadius:
-                                        BorderRadiusGeometry.circular(30)),
-                                padding: EdgeInsets.symmetric(horizontal: 10),
-                                elevation: 0),
-                            onPressed: () {
-                              setState(() {
-                                timeClicked = "month";
-                                applyFilter();
-                              });
-                            },
-                            child: Text(AppLocalizations.of(context)!.monthly,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w600))),
-                        ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: timeClicked == "6months"
-                                    ? Colors.purple
-                                    : Colors.transparent,
-                                shape: RoundedRectangleBorder(
-                                    side: BorderSide(
-                                        color: Colors.white,
-                                        width:
-                                            timeClicked == "6months" ? 3 : 2),
-                                    borderRadius:
-                                        BorderRadiusGeometry.circular(30)),
-                                padding: EdgeInsets.symmetric(horizontal: 10),
-                                elevation: 0),
-                            onPressed: () {
-                              setState(() {
-                                timeClicked = "6months";
-                                applyFilter();
-                              });
-                            },
-                            child: Text(
-                                AppLocalizations.of(context)!.six_months,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w600))),
-                        ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: timeClicked == "year"
-                                    ? Colors.purple
-                                    : Colors.transparent,
-                                shape: RoundedRectangleBorder(
-                                    side: BorderSide(
-                                        color: Colors.white,
-                                        width: timeClicked == "year" ? 3 : 2),
-                                    borderRadius:
-                                        BorderRadiusGeometry.circular(30)),
-                                padding: EdgeInsets.symmetric(horizontal: 10),
-                                elevation: 0),
-                            onPressed: () {
-                              setState(() {
-                                timeClicked = "year";
-                                applyFilter();
-                              });
-                            },
-                            child: Text(AppLocalizations.of(context)!.yearly,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w600))),
-                      ],
-                    ),
+                                        BorderRadius.all(Radius.circular(30))),
+                                child: Padding(
+                                  padding: EdgeInsetsGeometry.symmetric(
+                                      horizontal: 20, vertical: 10),
+                                  child: Text(
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w900,
+                                          fontSize: 28),
+                                      AppLocalizations.of(context)!.plans),
+                                )))
+                        : const SizedBox.shrink(),
+                    (kIsWeb || !Platform.isIOS)
+                        ? Row(
+                            spacing: 10,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: timeClicked == "month"
+                                          ? Colors.purple
+                                          : Colors.transparent,
+                                      shape: RoundedRectangleBorder(
+                                          side: BorderSide(
+                                              color: Colors.white,
+                                              width: timeClicked == "month"
+                                                  ? 3
+                                                  : 2),
+                                          borderRadius:
+                                              BorderRadiusGeometry.circular(
+                                                  30)),
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 10),
+                                      elevation: 0),
+                                  onPressed: () {
+                                    setState(() {
+                                      timeClicked = "month";
+                                      applyFilter();
+                                    });
+                                  },
+                                  child: Text(
+                                      AppLocalizations.of(context)!.monthly,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w600))),
+                              ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: timeClicked == "6months"
+                                          ? Colors.purple
+                                          : Colors.transparent,
+                                      shape: RoundedRectangleBorder(
+                                          side: BorderSide(
+                                              color: Colors.white,
+                                              width: timeClicked == "6months"
+                                                  ? 3
+                                                  : 2),
+                                          borderRadius:
+                                              BorderRadiusGeometry.circular(
+                                                  30)),
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 10),
+                                      elevation: 0),
+                                  onPressed: () {
+                                    setState(() {
+                                      timeClicked = "6months";
+                                      applyFilter();
+                                    });
+                                  },
+                                  child: Text(
+                                      AppLocalizations.of(context)!.six_months,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w600))),
+                              ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: timeClicked == "year"
+                                          ? Colors.purple
+                                          : Colors.transparent,
+                                      shape: RoundedRectangleBorder(
+                                          side: BorderSide(
+                                              color: Colors.white,
+                                              width: timeClicked == "year"
+                                                  ? 3
+                                                  : 2),
+                                          borderRadius:
+                                              BorderRadiusGeometry.circular(
+                                                  30)),
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 10),
+                                      elevation: 0),
+                                  onPressed: () {
+                                    setState(() {
+                                      timeClicked = "year";
+                                      applyFilter();
+                                    });
+                                  },
+                                  child: Text(
+                                      AppLocalizations.of(context)!.yearly,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w600))),
+                            ],
+                          )
+                        : const SizedBox.shrink(),
                     Padding(
                         padding: EdgeInsetsGeometry.symmetric(
                             horizontal: 10, vertical: 10),
                         child: Column(spacing: 30, children: [
-                          Text(
-                            text,
-                            style: TextStyle(color: Colors.green),
-                          ),
+                          (kIsWeb || !Platform.isIOS)
+                              ? Text(
+                                  text,
+                                  style: TextStyle(color: Colors.green),
+                                )
+                              : const SizedBox.shrink(),
                           Wrap(
                             spacing: 30,
                             runSpacing: 20,

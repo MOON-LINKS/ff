@@ -400,7 +400,7 @@ Navigator.push(
 );
 */
 //TEST PAGE
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 
 class ZTest extends StatefulWidget {
   const ZTest({Key? key}) : super(key: key);
@@ -543,3 +543,14 @@ class Card extends StatelessWidget {
     );
   }
 }
+ */
+/* | # | Topic                               | Why It Matters                                                       |
+| - | ----------------------------------- | -------------------------------------------------------------------- |
+| 1 | Flutter Rendering Pipeline        | Understand `Widget → Element → RenderObject` instead of only widgets | Widget = description => Element = live mounted identity/lifecycle => RenderObject = visual body
+| 2 | State Management Internals        | Learn rebuild optimization and reactive architecture deeply          | 
+| 3 | Slivers                           | Build advanced scroll systems and performant feeds                   | SingleChildScrollView or Column = simple scroll wrapper, while: ListView = optimized sliver list abstraction
+| 4 | CustomPainter                     | Create graphics, charts, custom visuals, effects                     | Canvas = the drawing surface where Flutter renders graphics manually, and Paint = the styling/configuration used to control how those graphics are drawn (color, stroke, fill, effects); used when building custom visuals, charts, graphics, effects, or highly optimized rendering systems beyond normal widgets.
+| 5 | Flutter Performance Engineering   | Master rebuilds, repainting, memory, rendering optimization          |
+| 6 | Platform Channels                 | Connect Flutter with native Kotlin/Swift APIs                        |
+| 7 | Flutter Engine & GPU Rendering    | Understand Skia, layers, frame scheduling, rendering internals       |
+ */
