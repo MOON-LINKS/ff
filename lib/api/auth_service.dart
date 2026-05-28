@@ -94,6 +94,10 @@ class AuthService {
         data: {"cred": cred, "password": password, "deviceName": deviceName},
       );
       return response.data;
+    } on DioException catch (e) {
+      if (e.response != null) {
+        return e.response!.data;
+      }
     } catch (e) {
       throw Exception('Login issue: $e');
     }

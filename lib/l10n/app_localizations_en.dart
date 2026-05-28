@@ -420,6 +420,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get subscribe_via_web => 'To subscribe or manage your plan, please visit app.moonlinks.me from your browser.';
 
   @override
+  String get no_plans_to_upgrade => 'No upgrade plans available for this subscription.';
+
+  @override
   String get menu_delete_subcategory => 'Delete Subcategory?';
 
   @override

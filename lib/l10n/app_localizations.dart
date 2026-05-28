@@ -919,6 +919,12 @@ abstract class AppLocalizations {
   /// **'To subscribe or manage your plan, please visit app.moonlinks.me from your browser.'**
   String get subscribe_via_web;
 
+  /// No description provided for @no_plans_to_upgrade.
+  ///
+  /// In en, this message translates to:
+  /// **'No upgrade plans available for this subscription.'**
+  String get no_plans_to_upgrade;
+
   /// No description provided for @menu_delete_subcategory.
   ///
   /// In en, this message translates to:

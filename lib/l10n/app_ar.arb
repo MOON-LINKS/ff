@@ -160,6 +160,7 @@
 "manage_payment_methods": "إدارة طرق الدفع",
 "add_on_updated_successfully": "تم تحديث الإضافة بنجاح.",
 "subscribe_via_web": "للاشتراك أو إدارة خطتك، يرجى زيارة app.moonlinks.me من متصفحك.",
+"no_plans_to_upgrade": "لا توجد خطط ترقية متاحة لهذا الاشتراك.",
 
   "menu_delete_subcategory": "حذف التصنيف الفرعي؟",
   "menu_delete_subcategory_message": "هل أنت متأكد أنك تريد حذف هذا التصنيف الفرعي؟ سيتم أيضًا حذف جميع العناصر داخله.",

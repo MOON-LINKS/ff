@@ -158,7 +158,7 @@
 "manage_payment_methods": "Gérer les moyens de paiement",
 "add_on_updated_successfully": "Module complémentaire mis à jour avec succès.",
 "subscribe_via_web": "Pour vous abonner ou gérer votre abonnement, veuillez visiter app.moonlinks.me depuis votre navigateur.",
-
+"no_plans_to_upgrade": "Aucun plan de mise à niveau disponible pour cet abonnement.",
 
   "menu_delete_subcategory": "Supprimer la sous-catégorie ?",
   "menu_delete_subcategory_message": "Êtes-vous sûr de vouloir supprimer cette sous-catégorie ? Tous les éléments qu’elle contient seront également supprimés.",

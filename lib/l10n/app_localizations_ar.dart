@@ -420,6 +420,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get subscribe_via_web => 'للاشتراك أو إدارة خطتك، يرجى زيارة app.moonlinks.me من متصفحك.';
 
   @override
+  String get no_plans_to_upgrade => 'لا توجد خطط ترقية متاحة لهذا الاشتراك.';
+
+  @override
   String get menu_delete_subcategory => 'حذف التصنيف الفرعي؟';
 
   @override

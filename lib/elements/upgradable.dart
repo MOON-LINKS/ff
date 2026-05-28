@@ -56,16 +56,19 @@ class _UpgradableState extends ConsumerState<Upgradable> {
     setState(() {
       _loading = true;
     });
+    try {
+      final response =
+          await serviceAPI.getListUpgradables(widget.plan['serviceId']);
 
-    final response =
-        await serviceAPI.getListUpgradables(widget.plan['serviceId']);
-
-    setState(() {
-      plans = List<Map<String, dynamic>>.from(
-        response['upgradablePlans'] ?? [],
-      );
-      _loading = false;
-    });
+      setState(() {
+        plans = List<Map<String, dynamic>>.from(
+          response['upgradablePlans'] ?? [],
+        );
+        _loading = false;
+      });
+    } catch (e) {
+      if (mounted) setState(() => _loading = false);
+    }
   }
 
   @override
@@ -94,6 +97,14 @@ class _UpgradableState extends ConsumerState<Upgradable> {
                   child: CircularProgressIndicator(
                     color: Colors.white,
                   ),
+                )
+              else if (plans.isEmpty)
+                Padding(
+                  padding: EdgeInsetsGeometry.symmetric(
+                      vertical: 25, horizontal: 15),
+                  child: Text(AppLocalizations.of(context)!.no_plans_to_upgrade,
+                      style: TextStyle(fontSize: 20, color: Colors.black),
+                      textAlign: TextAlign.center),
                 )
               else
                 Column(
