@@ -39,7 +39,9 @@ class MenuState extends ConsumerState<Menu> {
     final allServices = response['services'] as List;
     final filtered = allServices
         .where((item) => item['service_code'] == 'menu_generator')
-        .toList();
+        .toList()
+      ..sort((a, b) =>
+          double.parse(a['price']).compareTo(double.parse(b['price'])));
     allPlans = filtered;
     applyFilter();
     setState(() {
@@ -275,6 +277,7 @@ class MenuState extends ConsumerState<Menu> {
                                           addToCart: () {
                                             addToCart(plan);
                                           },
+                                          serviceName: 'menu',
                                         );
                                       }).toList()
                                     : [

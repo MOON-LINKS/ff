@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:moonlinks/api/service.dart';
 import 'package:moonlinks/l10n/app_localizations.dart';
@@ -121,66 +124,74 @@ class _MenuAddOnCalculatorState extends State<MenuAddOnCalculator> {
         padding: EdgeInsets.all(10),
         child: Column(children: [
           Row(children: [Text(AppLocalizations.of(context)!.addon_price_rule)]),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                  onPressed: () {
-                    if (newQuantity - 100 > widget.quantity) {
-                      setState(() {
-                        newQuantity -= 100;
-                      });
-                    }
-                  },
-                  child: Text(
-                      style: TextStyle(color: Colors.purple, fontSize: 18),
-                      '-')),
-              Slider(
-                  min: minValue,
-                  max: maxValue,
-                  value: newQuantity,
-                  divisions: divisions,
-                  label: newQuantity.toInt().toString(),
-                  activeColor: Colors.purple,
-                  onChanged: (value) {
-                    setState(() {
-                      newQuantity = value;
-                    });
-                  }),
-              ElevatedButton(
-                  onPressed: () {
-                    if (newQuantity + 100 <= max) {
-                      setState(() {
-                        newQuantity += 100;
-                      });
-                    }
-                  },
-                  child: Text(
-                      style: TextStyle(color: Colors.purple, fontSize: 18),
-                      '+')),
-            ],
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            spacing: 10,
-            children: [
-              Text(
-                  '${AppLocalizations.of(context)!.total_add_on_is} : ${newQuantity.toInt()}',
-                  style: TextStyle(color: Colors.purple, fontSize: 18)),
-              Column(children: [
-                CustomMenuButton(
-                    child: widget.quantity != 0
-                        ? AppLocalizations.of(context)!.update_add
-                        : AppLocalizations.of(context)!.add_on,
-                    onPressed: () {
-                      checkout((newQuantity / 100).toInt(), stripeItemId);
-                    }),
-                Text(
-                    '${AppLocalizations.of(context)!.total_price}: \$ ${newQuantity.toInt() / 100 * 2}',
-                    style: TextStyle(color: Colors.black))
-              ])
-            ],
-          ),
+          (kIsWeb || !Platform.isIOS)
+              ? Column(children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                          onPressed: () {
+                            if (newQuantity - 100 > widget.quantity) {
+                              setState(() {
+                                newQuantity -= 100;
+                              });
+                            }
+                          },
+                          child: Text(
+                              style:
+                                  TextStyle(color: Colors.purple, fontSize: 18),
+                              '-')),
+                      Slider(
+                          min: minValue,
+                          max: maxValue,
+                          value: newQuantity,
+                          divisions: divisions,
+                          label: newQuantity.toInt().toString(),
+                          activeColor: Colors.purple,
+                          onChanged: (value) {
+                            setState(() {
+                              newQuantity = value;
+                            });
+                          }),
+                      ElevatedButton(
+                          onPressed: () {
+                            if (newQuantity + 100 <= max) {
+                              setState(() {
+                                newQuantity += 100;
+                              });
+                            }
+                          },
+                          child: Text(
+                              style:
+                                  TextStyle(color: Colors.purple, fontSize: 18),
+                              '+')),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    spacing: 10,
+                    children: [
+                      Text(
+                          '${AppLocalizations.of(context)!.total_add_on_is} : ${newQuantity.toInt()}',
+                          style: TextStyle(color: Colors.purple, fontSize: 18)),
+                      Column(children: [
+                        CustomMenuButton(
+                            child: widget.quantity != 0
+                                ? AppLocalizations.of(context)!.update_add
+                                : AppLocalizations.of(context)!.add_on,
+                            onPressed: () {
+                              checkout(
+                                  (newQuantity / 100).toInt(), stripeItemId);
+                            }),
+                        Text(
+                            '${AppLocalizations.of(context)!.total_price}: \$ ${newQuantity.toInt() / 100 * 2}',
+                            style: TextStyle(color: Colors.black))
+                      ])
+                    ],
+                  )
+                ])
+              : Text(AppLocalizations.of(context)!.apple_pay_disabled,
+                  style: TextStyle(color: Colors.black, fontSize: 12)),
           /* Column(children: [
             Row(children: [
               Text('Auto-Renew',

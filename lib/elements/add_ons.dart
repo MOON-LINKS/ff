@@ -17,7 +17,6 @@ class _AddOnsState extends State<AddOns> {
   void initializeAddOn() async {
     try {
       final response = await addOnMenu.getMenuAddOns();
-      print(response);
       setState(() {
         addOn = response['data'];
       });

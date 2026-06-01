@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:moonlinks/functions/context_extension.dart';
 import 'package:moonlinks/l10n/app_localizations.dart';
 import 'package:moonlinks/menu/elements/z_custom/custom_payment_methods.dart';
+import 'package:moonlinks/pages/services/catalogue.dart';
 import 'package:moonlinks/pages/services/menu.dart';
 import './web/webview_screen.dart';
 import 'elements/gradient.dart';
@@ -48,6 +49,13 @@ class Services extends StatelessWidget {
                               title: AppLocalizations.of(context)!.menu,
                               subtitle: AppLocalizations.of(context)!.generator,
                               destination: Menu(),
+                            ),
+                            const SizedBox(height: 16),
+                            ServiceBtn(
+                              imagePath: "assets/icons/menu.svg",
+                              title: AppLocalizations.of(context)!.catalogue,
+                              subtitle: AppLocalizations.of(context)!.generator,
+                              destination: Catalogue(),
                             ),
                             const SizedBox(height: 16),
                             ServiceBtn(

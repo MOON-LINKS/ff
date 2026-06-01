@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:moonlinks/api/pay.dart';
@@ -106,6 +109,8 @@ class _UpgradableState extends ConsumerState<Upgradable> {
                       style: TextStyle(fontSize: 20, color: Colors.black),
                       textAlign: TextAlign.center),
                 )
+              else if (!kIsWeb && Platform.isIOS)
+                Text(AppLocalizations.of(context)!.apple_pay_disabled)
               else
                 Column(
                   children: plans.map<Widget>((plan) {

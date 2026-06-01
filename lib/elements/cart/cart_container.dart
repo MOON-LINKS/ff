@@ -27,6 +27,8 @@ class _CartContainerState extends ConsumerState<CartContainer> {
         SnackBar(
           content: Text(AppLocalizations.of(context)!.must_be_signed_in_to_pay),
           action: SnackBarAction(
+            backgroundColor: Colors.purple,
+            textColor: Colors.white,
             label: AppLocalizations.of(context)!.sign_in,
             onPressed: () {
               Navigator.pushReplacement(
@@ -94,6 +96,7 @@ class _CartContainerState extends ConsumerState<CartContainer> {
                 border: Border.all(width: 2, color: Colors.white),
                 color: Colors.black),
             child: Column(
+              spacing: 30,
               children: [
                 Align(
                   alignment: Alignment.topRight,

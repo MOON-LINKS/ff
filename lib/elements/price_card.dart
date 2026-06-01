@@ -10,71 +10,126 @@ class PriceCard extends StatefulWidget {
   final bool isAvailable;
   final String duration;
   final VoidCallback addToCart;
+  final String serviceName;
   const PriceCard(
       {super.key,
       required this.planType,
       required this.price,
       required this.duration,
       required this.addToCart,
-      required this.isAvailable});
+      required this.isAvailable,
+      required this.serviceName});
 
   @override
   State<PriceCard> createState() => _PriceCard();
 }
 
 class _PriceCard extends State<PriceCard> {
-  final List<String> standard = [
-    'feature_30_images',
-    'feature_order_method',
-    'feature_color_patterns',
-    'feature_logo',
-    'feature_banner',
-    'feature_offer',
-    'feature_unlimited_categories_items',
-    'feature_fonts',
-    'feature_qr_code_generated',
-    'feature_moon_links_hosting',
-  ];
+  final Map<String, List<String>> menu = {
+    'standard': [
+      'feature_30_images',
+      'feature_order_method',
+      'feature_color_patterns',
+      'feature_logo',
+      'feature_banner',
+      'feature_offer',
+      'feature_unlimited_categories_items',
+      'feature_fonts',
+      'feature_qr_code_generated',
+      'feature_moon_links_hosting',
+    ],
+    'pro': [
+      'feature_150_images',
+      'feature_color_patterns',
+      'feature_order_method',
+      'feature_logo',
+      'feature_banner',
+      'feature_offer',
+      'feature_unlimited_categories_items',
+      'feature_fonts',
+      'feature_qr_code_generated',
+      'feature_moon_links_hosting',
+      'feature_open_close_timers',
+      'feature_feedback',
+      'feature_3_social_media_links',
+    ],
+    'premium': [
+      'feature_300_images',
+      'feature_color_patterns',
+      'feature_order_method',
+      'feature_logo',
+      'feature_banner',
+      'feature_offer',
+      'feature_unlimited_categories_items',
+      'feature_fonts',
+      'feature_qr_code_generated',
+      'feature_moon_links_hosting',
+      'feature_open_close_timers',
+      'feature_feedback',
+      'feature_category_images_upload',
+      'feature_unlimited_social_media_links',
+      'feature_country_branch_locations',
+      'feature_real_time_animations',
+      'feature_analytics',
+      'feature_translate_up_to_6_languages',
+      'feature_unlimited_images_add_ons',
+      'feature_enhanced_seo_digital_marketing',
+      'feature_24_7_priority_support',
+    ]
+  };
+  final Map<String, List<String>> catalogue = {
+    'standard': [
+      'feature_30_images',
+      'feature_order_method',
+      'feature_color_patterns',
+      'feature_logo',
+      'feature_banner',
+      'feature_offer',
+      'feature_unlimited_categories_items',
+      'feature_fonts',
+      'feature_qr_code_generated',
+      'feature_moon_links_hosting',
+    ],
+    'pro': [
+      'feature_150_images',
+      'feature_color_patterns',
+      'feature_order_method',
+      'feature_logo',
+      'feature_banner',
+      'feature_offer',
+      'feature_unlimited_categories_items',
+      'feature_fonts',
+      'feature_qr_code_generated',
+      'feature_moon_links_hosting',
+      'feature_open_close_timers',
+      'feature_feedback',
+      'feature_3_social_media_links',
+    ],
+    'premium': [
+      'feature_300_images',
+      'feature_color_patterns',
+      'feature_order_method',
+      'feature_logo',
+      'feature_banner',
+      'feature_offer',
+      'feature_unlimited_categories_items',
+      'feature_fonts',
+      'feature_qr_code_generated',
+      'feature_moon_links_hosting',
+      'feature_open_close_timers',
+      'feature_feedback',
+      'feature_category_images_upload',
+      'feature_unlimited_social_media_links',
+      'feature_country_branch_locations',
+      'feature_real_time_animations',
+      'feature_analytics',
+      'feature_translate_up_to_6_languages',
+      'feature_unlimited_images_add_ons',
+      'feature_enhanced_seo_digital_marketing',
+      'feature_24_7_priority_support',
+    ]
+  };
 
-  final List<String> pro = [
-    'feature_150_images',
-    'feature_color_patterns',
-    'feature_order_method',
-    'feature_logo',
-    'feature_banner',
-    'feature_offer',
-    'feature_unlimited_categories_items',
-    'feature_fonts',
-    'feature_qr_code_generated',
-    'feature_moon_links_hosting',
-    'feature_open_close_timers',
-    'feature_feedback',
-    'feature_3_social_media_links',
-  ];
-
-  final List<String> premium = [
-    'feature_300_images',
-    'feature_color_patterns',
-    'feature_order_method',
-    'feature_logo',
-    'feature_banner',
-    'feature_offer',
-    'feature_unlimited_categories_items',
-    'feature_fonts',
-    'feature_qr_code_generated',
-    'feature_moon_links_hosting',
-    'feature_open_close_timers',
-    'feature_feedback',
-    'feature_category_images_upload',
-    'feature_unlimited_social_media_links',
-    'feature_country_branch_locations',
-    'feature_real_time_animations',
-    'feature_analytics',
-    'feature_translate_up_to_6_languages',
-    'feature_unlimited_images_add_ons',
-    'feature_enhanced_seo_digital_marketing',
-    'feature_24_7_priority_support',
-  ];
   String _translate(BuildContext context, String key) {
     final l10n = AppLocalizations.of(context)!;
 
@@ -172,7 +227,7 @@ class _PriceCard extends State<PriceCard> {
                             fontSize: 15,
                             color: Colors.white,
                             fontWeight: FontWeight.w400),
-                        '(\$ ${widget.duration == '6months' ? double.parse(widget.price) / 6 : double.parse(widget.price) / 12} / month)')
+                        '(\$ ${widget.duration == '6months' ? double.parse((double.parse(widget.price) / 6).toStringAsFixed(2)) : double.parse((double.parse(widget.price) / 12).toStringAsFixed(2))} / month)')
                     : const SizedBox.shrink(),
                 widget.isAvailable
                     ? ElevatedButton(
@@ -217,16 +272,15 @@ class _PriceCard extends State<PriceCard> {
                     ? ListView(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        children: (widget.planType == 'STANDARD'
-                                ? standard
-                                : widget.planType == 'PRO'
-                                    ? pro
-                                    : premium)
-                            .map((key) => Text(
-                                  _translate(context, key),
-                                  textAlign: TextAlign.center,
-                                ))
-                            .toList(),
+                        children:
+                            ((widget.serviceName == 'menu' ? menu : catalogue)[
+                                        widget.planType.toLowerCase()] ??
+                                    [])
+                                .map((key) => Text(
+                                      _translate(context, key),
+                                      textAlign: TextAlign.center,
+                                    ))
+                                .toList(),
                       )
                     : SizedBox.shrink()
               ],

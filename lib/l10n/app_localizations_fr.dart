@@ -24,6 +24,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get menu => 'MENU';
 
   @override
+  String get catalogue => 'CATALOGUE';
+
+  @override
   String get generator => 'GÉNÉRATEUR';
 
   @override
@@ -79,6 +82,9 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get menu_description => 'Que vous dirigiez un petit café, un restaurant animé ou un service de restauration en ligne, notre outil de création de menus est fait pour vous. Simple, flexible et facile à utiliser, il vous permet de créer des menus qui reflètent votre marque. Avec l’hébergement en ligne intégré, vos clients peuvent toujours voir votre menu à jour où qu’ils soient. Découvrez nos plans et choisissez celui qui convient le mieux à votre entreprise.';
+
+  @override
+  String get catalogue_description => 'Que vous gériez une boutique, un commerce de détail ou une activité basée sur des produits, notre outil de catalogue est fait pour vous. Simple, flexible et facile à utiliser, il vous donne la liberté de présenter vos produits d\'une manière qui reflète vraiment votre marque. Grâce à l\'hébergement intégré, vos clients peuvent toujours parcourir votre dernier catalogue où qu\'ils soient. Explorez nos formules et choisissez celle qui convient le mieux à votre activité, car chaque marque mérite un catalogue aussi unique que ses produits.';
 
   @override
   String get plans => 'PLANS';

@@ -1,16 +1,16 @@
 {
   "language_title": "اللغة",
   "services": "الخدمات",
-  "no_news":"لا توجد أخبار متاحة حالياً",
+  "no_news": "لا توجد أخبار متاحة حالياً",
   "best_services_for_you": "أفضل الخدمات لك",
   "menu": "القائمة",
+  "catalogue": "الكتالوج",
   "generator": "المُنشئ",
   "biopage": "صفحة البايو",
   "free_generator": "مُنشئ مجاني",
   "qr_code": "رمز QR",
   "barcode": "الباركود",
   "secure_payments_supported_by": "مدفوعات آمنة مدعومة بواسطة",
-
   "workspace": "مساحة العمل",
   "upgrade_plan": "ترقية الخطة",
   "less_info": "معلومات أقل",
@@ -18,67 +18,54 @@
   "auto_renew": "تجديد تلقائي",
   "you_are_not_subscribed_yet": "أنت غير مشترك بعد",
   "must_be_logged_in_to_access_services": "يجب تسجيل الدخول للوصول إلى خدماتك",
-
   "infinite_access": "وصول غير محدود",
   "what_we_offer_and_whats_new": "ما نقدمه وما الجديد",
-
   "this_plan_is_in_cart": "هذه الخطة في السلة",
   "you_are_subscribed_to_this_plan": "أنت مشترك في هذه الخطة",
   "menu_title": "القائمة",
   "menu_description": "سواء كنت تدير مقهى صغيرًا أو مطعمًا مزدحمًا أو خدمة طعام عبر الإنترنت، فإن أداة إنشاء القوائم لدينا مصممة لك. إنها بسيطة ومرنة وسهلة الاستخدام، وتمنحك الحرية لإنشاء قوائم تعكس علامتك التجارية. مع الاستضافة المدمجة عبر الإنترنت، يمكن لعملائك دائمًا رؤية قائمتك المحدثة أينما كانوا. استكشف خططنا واختر ما يناسب عملك، لأن كل مطعم يستحق قائمة فريدة مثل طعامه.",
-
+  "catalogue_description": "سواء كنت تدير متجراً صغيراً أو محلاً للبيع بالتجزئة أو نشاطاً تجارياً قائماً على المنتجات، فإن أداة الكتالوج مصممة لك. بسيطة ومرنة وسهلة الاستخدام، تمنحك الحرية لعرض منتجاتك بطريقة تعكس هويتك. مع الاستضافة المدمجة، يمكن لعملائك دائماً تصفح آخر تحديثات كتالوجك أينما كانوا. استكشف خططنا واختر ما يناسب عملك، لأن كل علامة تجارية تستحق كتالوجاً بقدر تميز منتجاتها.",
   "plans": "الخطط",
   "monthly": "شهري",
   "six_months": "6 أشهر",
   "yearly": "سنوي",
   "learn_how_to_build_your_menu": "تعلم كيفية إنشاء قائمتك",
-
   "profile": "الملف الشخصي",
   "information_about_you": "معلومات عنك",
   "name": "الاسم",
   "email": "البريد الإلكتروني",
   "password": "كلمة المرور",
   "logout": "تسجيل الخروج",
-
   "register": "تسجيل",
   "sign_up_for_new_acc": "إنشاء حساب جديد",
   "accept_term_and_conditions": "يجب قبول الشروط والأحكام",
   "registering": "جارٍ التسجيل...",
-
   "reset_your_password": "إعادة تعيين كلمة المرور",
   "enter_your_new_password": "أدخل كلمة المرور الجديدة",
   "re_enter_your_password": "أعد إدخال كلمة المرور",
   "reset": "إعادة تعيين",
-
   "enter_your_otp": "أدخل رمز التحقق",
   "enter_your_mail": "أدخل بريدك الإلكتروني",
   "reset_your_password_title": "إعادة تعيين كلمة المرور إذا نسيتها",
   "otp_title": "رمز التحقق",
   "enter_the_6_digit_code_you_received": "أدخل الرمز المكون من 6 أرقام",
-
   "registration_successful": "تم التسجيل بنجاح!",
   "wrong_otp_try_again_later": "رمز خاطئ، حاول لاحقًا",
-
   "logout_from_all": "تسجيل الخروج من جميع الأجهزة",
   "logout_from_all_opened_sessions": "تسجيل الخروج من جميع الجلسات المفتوحة",
   "enter_your_password": "أدخل كلمة المرور",
-
   "log_in": "تسجيل الدخول",
   "log_into_account": "تسجيل الدخول إلى حسابك",
   "login_failed": "فشل تسجيل الدخول",
   "checking_inputs": "جارٍ التحقق...",
   "login_successful": "تم تسجيل الدخول بنجاح!",
-
   "sign_up": "إنشاء حساب",
   "close": "إغلاق",
-
   "upgrade": "ترقية",
   "you_have_to_pay_more": "يجب دفع المزيد",
   "i_accept_terms_and_conditions": "أوافق على الشروط والأحكام",
-
   "add_to_cart": "أضف إلى السلة",
   "view_plan_description": "عرض تفاصيل الخطة",
-
   "feature_30_images": "• 30 صورة",
   "feature_order_method": "• طريقة الطلب",
   "feature_color_patterns": "• أنماط الألوان",
@@ -89,12 +76,10 @@
   "feature_fonts": "• الخطوط",
   "feature_qr_code_generated": "• إنشاء رمز QR",
   "feature_moon_links_hosting": "• استضافة MOON LINKS",
-
   "feature_150_images": "• 150 صورة",
   "feature_open_close_timers": "• مؤقتات الفتح والإغلاق",
   "feature_feedback": "• تقييمات",
   "feature_3_social_media_links": "• 3 روابط تواصل اجتماعي",
-
   "feature_300_images": "• 300 صورة",
   "feature_category_images_upload": "• رفع صور الفئات",
   "feature_unlimited_social_media_links": "• روابط تواصل اجتماعي غير محدودة",
@@ -105,14 +90,11 @@
   "feature_unlimited_images_add_ons": "• إضافات صور غير محدودة",
   "feature_enhanced_seo_digital_marketing": "• تحسين SEO وتسويق رقمي",
   "feature_24_7_priority_support": "• دعم أولوية 24/7",
-
   "home_nav": "الرئيسية",
   "services_nav": "الخدمات",
   "my_services_nav": "خدماتي",
   "profile_nav": "الملف",
-
   "selected": "محدد",
-
   "confirm_add_on": "تأكيد الإضافة",
   "confirm_add_on_message": "سيتم تحديث الإضافة فورًا وخصم المبلغ من حسابك. هل تريد المتابعة؟",
   "cancel": "إلغاء",
@@ -122,46 +104,40 @@
   "update_add": "تحديث الإضافة",
   "add_on": "إضافة",
   "total_price": "السعر الإجمالي",
-
   "field_required": "هذا الحقل مطلوب",
   "invalid_email": "أدخل بريدًا إلكترونيًا صالحًا",
   "password_min_length": "كلمة المرور يجب أن تكون 6 أحرف على الأقل",
-
   "no_addon_data_available": "لا توجد بيانات إضافات",
   "images_added": "الصور المضافة",
   "till": "حتى",
   "status": "الحالة",
-
   "must_be_signed_in_to_pay": "يجب تسجيل الدخول للدفع",
   "sign_in": "تسجيل الدخول",
   "account_not_verified": "حسابك غير مفعل",
   "no_added_service": "لا يوجد أي خدمة مضافة",
   "cart": "السلة",
   "pay_now": "ادفع الآن",
-  "past_due":  "إعادة الشحن مطلوبة: لقد انتهت صلاحية خطتك ولا توجد أرصدة كافية أو أن التجديد التلقائي متوقف.",
+  "past_due": "إعادة الشحن مطلوبة: لقد انتهت صلاحية خطتك ولا توجد أرصدة كافية أو أن التجديد التلقائي متوقف.",
   "recharge": "إعادة الشحن",
   "resubscribe": "إعادة الاشتراك",
   "apple_pay_disabled": "دعم Apple Pay قيد التطوير حالياً. يرجى استخدام الدفع عبر الويب.",
   "upgrade_now_title": "الترقية الآن؟",
   "upgrade_now_description": "سيتم استخدام بطاقتك الحالية لترقية خطتك مباشرةً.",
   "choose_language": "اختر اللغة",
-
-"delete_account_button": "حذف الحساب",
-"delete_account_title": "حذف الحساب؟",
-"delete_account_warning": "هذا الإجراء لا يمكن التراجع عنه. سيتم إلغاء جميع اشتراكاتك وتعطيل حسابك نهائياً.",
-"delete_account_confirm": "نعم، احذف",
-"delete_account_error": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
-"recharge_plan": "تجديد الاشتراك",
-"already_have_active_plan": "لديك خطة نشطة بالفعل.",
-
-"recharge_confirm_title": "تجديد الاشتراك؟",
-"recharge_confirm_description": "سيتم خصم المبلغ من بطاقتك المسجلة فوراً لإعادة تفعيل اشتراكك.",
-"recharge_confirm_button": "نعم، جدّد",
-"manage_payment_methods": "إدارة طرق الدفع",
-"add_on_updated_successfully": "تم تحديث الإضافة بنجاح.",
-"subscribe_via_web": "للاشتراك أو إدارة خطتك، يرجى زيارة app.moonlinks.me من متصفحك.",
-"no_plans_to_upgrade": "لا توجد خطط ترقية متاحة لهذا الاشتراك.",
-
+  "delete_account_button": "حذف الحساب",
+  "delete_account_title": "حذف الحساب؟",
+  "delete_account_warning": "هذا الإجراء لا يمكن التراجع عنه. سيتم إلغاء جميع اشتراكاتك وتعطيل حسابك نهائياً.",
+  "delete_account_confirm": "نعم، احذف",
+  "delete_account_error": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+  "recharge_plan": "تجديد الاشتراك",
+  "already_have_active_plan": "لديك خطة نشطة بالفعل.",
+  "recharge_confirm_title": "تجديد الاشتراك؟",
+  "recharge_confirm_description": "سيتم خصم المبلغ من بطاقتك المسجلة فوراً لإعادة تفعيل اشتراكك.",
+  "recharge_confirm_button": "نعم، جدّد",
+  "manage_payment_methods": "إدارة طرق الدفع",
+  "add_on_updated_successfully": "تم تحديث الإضافة بنجاح.",
+  "subscribe_via_web": "للاشتراك أو إدارة خطتك، يرجى زيارة app.moonlinks.me من متصفحك.",
+  "no_plans_to_upgrade": "لا توجد خطط ترقية متاحة لهذا الاشتراك.",
   "menu_delete_subcategory": "حذف التصنيف الفرعي؟",
   "menu_delete_subcategory_message": "هل أنت متأكد أنك تريد حذف هذا التصنيف الفرعي؟ سيتم أيضًا حذف جميع العناصر داخله.",
   "menu_delete": "حذف",
@@ -170,65 +146,49 @@
   "menu_subcategories_for": "التصنيفات الفرعية لـ",
   "menu_no_subcategories_found": "لم يتم العثور على تصنيفات فرعية",
   "menu_add_subcategory": "إضافة تصنيف فرعي",
-
   "menu_checking_inputs": "جاري التحقق من المدخلات...",
   "menu_unsaved_changes": "تغييرات غير محفوظة",
   "menu_unsaved_changes_message": "لديك تغييرات غير محفوظة. ماذا تريد أن تفعل؟",
   "menu_leave_anyway": "المغادرة على أي حال",
   "menu_publish_exit": "نشر والخروج",
-
   "menu_name": "الاسم",
   "menu_name_unique_hint": "يجب أن يكون الاسم فريدًا.\nإذا تم تغيير الاسم، يجب تحديث رمز QR أيضًا.",
   "menu_resto_name_hint": "أدخل اسم المطعم",
   "menu_name_validation": "يجب أن يحتوي الاسم فقط على أحرف وأرقام و -",
   "menu_set_name": "تعيين الاسم",
-
   "menu_domain": "النطاق",
   "menu_domain_hint": "أضف نطاقك الخاص",
   "menu_your_domain": "نطاقك",
-
   "menu_logo": "الشعار",
   "menu_logo_hint": "قم بتحميل شعارك",
-
   "menu_bio": "الوصف",
   "menu_bio_hint": "أضف وصفًا قصيرًا عن عملك",
-
   "menu_banner": "البانر",
   "menu_banner_hint": "قم بتحميل بانر المطعم",
-
   "menu_inner_banner": "بانر داخلي",
   "menu_inner_banner_hint": "بانر للتصنيفات والعناصر",
-
   "menu_loader": "التحميل",
   "menu_loader_hint": "أضف حركة تحميل لتحسين تجربة المستخدم",
-
   "menu_offer": "عرض",
   "menu_offer_hint": "أضف عروضك الحالية أو آخر الأخبار",
-
   "menu_main_colors": "الألوان الرئيسية",
   "menu_colors_hint": "تخصيص ألوان واجهة القائمة",
-
   "menu_primary": "أساسي",
   "menu_secondary": "ثانوي",
   "menu_title_color": "العنوان",
   "menu_text": "النص",
-
   "menu_currency": "العملة",
   "menu_currency_input": "أدخل العملة (مثال: $)",
   "menu_currency_hint": "سيتم تطبيق هذه العملة على جميع الأسعار",
-
   "menu_categories": "التصنيفات",
   "menu_categories_hint": "انقر لعرض وإدارة التصنيفات والتصنيفات الفرعية والعناصر",
-
   "menu_ordering": "الطلبات",
   "menu_ordering_hint": "تفعيل الطلب عبر الإنترنت",
   "branch_ordering_hint": "اطلب حسب الفرع",
-
   "menu_google_account": "حساب Google",
   "menu_google_account_hint": "ربط موقع نشاطك التجاري أو حساب Google",
   "menu_go_home": "العودة للرئيسية",
   "menu_publish_success": "تم نشر القائمة بنجاح",
-
   "menu_delete_item": "حذف العنصر؟",
   "menu_delete_item_message": "هل أنت متأكد أنك تريد حذف هذا العنصر؟ لا يمكن التراجع عن هذا الإجراء.",
   "menu_images_used": "الصور المستخدمة",
@@ -237,95 +197,68 @@
   "menu_items_manage_hint": "عرض وإضافة وتعديل العناصر",
   "menu_no_items": "لم تتم إضافة عناصر بعد",
   "menu_add_item": "إضافة عنصر",
-
   "menu_getting_domain_info": "جاري جلب معلومات النطاق",
   "menu_adding_domain": "جاري إضافة النطاق",
   "menu_failed_to_add_domain": "فشل في إضافة النطاق",
   "menu_checking_domain_status": "جاري التحقق من الحالة",
   "menu_deleting_domain": "جاري حذف النطاق",
   "menu_failed_to_load_domain": "فشل في تحميل النطاق",
-
   "menu_delete_category": "حذف؟",
   "menu_delete_category_message": "هل أنت متأكد أنك تريد حذف هذا التصنيف؟ سيتم أيضًا حذف جميع التصنيفات الفرعية والعناصر داخله.",
-
   "menu_categories_title": "التصنيفات",
   "menu_categories_tooltip": "إضافة وعرض وتعديل التصنيفات",
-
   "menu_category_icon_colors": "ألوان أيقونة التصنيف",
   "menu_category_icon_colors_hint": "اختر ألوان الأيقونات. ينطبق فقط على الأيقونات.",
-
   "menu_close_picker": "إغلاق المحدد",
   "menu_open_picker": "فتح المحدد",
-
   "menu_category_list": "قائمة التصنيفات",
   "menu_no_categories": "لا توجد تصنيفات",
   "menu_add_category": "إضافة تصنيف",
-
   "menu_fonts_title": "الخطوط",
   "menu_fonts_tooltip": "اختر نوع الخط للقائمة",
-
   "menu_add_image": "إضافة صورة",
   "menu_upload_failed": "فشل الرفع، حاول مرة أخرى",
-
   "menu_add_category_title": "إضافة تصنيف",
   "menu_edit_category_title": "تعديل التصنيف",
   "menu_category_name": "اسم التصنيف",
-
   "menu_replace_image": "استبدال الصورة",
-
   "menu_image_priority_hint": "إذا تم تعيين أيقونة وصورة، سيتم عرض الصورة بدلاً من الأيقونة.",
-
   "menu_upgrade_for_images": "قم بالترقية لرفع صور مخصصة",
-
   "menu_category_name_required": "اسم التصنيف لا يمكن أن يكون فارغًا.",
-
   "menu_add_close": "إضافة وإغلاق",
   "menu_save_close": "حفظ وإغلاق",
-
   "menu_edit": "تعديل",
   "menu_add_view_subcategories": "إضافة وعرض التصنيفات الفرعية",
   "menu_contains": "يحتوي على",
   "menu_subcategories_count": "تصنيف فرعي",
-
   "menu_add_your_domain": "أضف نطاقك",
   "menu_domain_input_label": "أدخل رابط النطاق",
   "menu_domain_input_example": "مثال: client1.com",
   "menu_domain_input_hint": "client1.com",
-
   "menu_add_domain": "إضافة نطاق",
   "menu_delete_domain": "حذف هذا النطاق",
   "menu_delete_domain_message": "هل أنت متأكد أنك تريد إلغاء ربط هذا النطاق؟",
-
   "menu_check_domain_status": "تحقق من حالة النطاق",
   "menu_applied_on": "تم التطبيق في",
-
   "menu_url_copied": "تم نسخ الرابط",
-
   "menu_nameservers_title": "أسماء الخوادم:",
   "menu_ns1_copied": "تم نسخ NS1",
   "menu_ns2_copied": "تم نسخ NS2",
-
   "menu_check_domain": "تحقق من النطاق",
-
   "menu_add_subcategory_title": "إضافة تصنيف فرعي",
   "menu_edit_subcategory_title": "تعديل التصنيف الفرعي",
   "menu_subcategory_name": "اسم التصنيف الفرعي",
   "menu_subcategory_name_required": "اسم التصنيف الفرعي مطلوب.",
-
   "menu_add_view_items": "إضافة وعرض العناصر",
   "menu_items_count": "عنصر",
   "menu_phone_number": "رقم الهاتف",
-
   "menu_tap_link_copy": "اضغط لنسخ الرابط",
   "menu_link_copied": "تم نسخ رابط القائمة!",
   "menu_publish": "نشر",
-
   "menu_change": "تغيير",
   "menu_pick_color": "اختر لون:",
-
   "menu_day": "اليوم",
   "menu_clicks": "النقرات",
-
   "menu_year": "السنة",
   "menu_analytics_title": "الإحصائيات",
   "menu_analytics_tooltip": "عرض بيانات الأداء",
@@ -333,60 +266,45 @@
   "menu_go_premium_to_unlock": "الترقية إلى Premium",
   "menu_animation_title": "الحركة",
   "menu_animation_tooltip": "اختر طريقة فتح القائمة",
-
   "menu_food": "طعام",
-
   "menu_new_branch": "فرع جديد",
   "menu_branch_name_hint": "أدخل اسم الفرع",
   "menu_field_required": "هذا الحقل مطلوب",
   "menu_branch_link_hint": "أدخل رابط الفرع",
   "menu_add_branch": "إضافة فرع",
-
   "menu_country_branches_title": "فروع الدول",
   "menu_country_branches_tooltip": "إدارة الفروع حسب الدولة",
-
   "menu_adding_new_country": "جاري إضافة دولة",
   "menu_add_new_country": "إضافة دولة جديدة",
-
   "menu_adding_branch": "جاري إضافة فرع",
   "menu_country": "الدولة",
   "menu_country_name": "اسم الدولة",
   "menu_add_country": "إضافة دولة",
-
   "menu_add_review": "أضف تقييمك",
   "menu_write_review_hint": "اكتب تقييمك (اختياري)",
   "menu_preview_notice": "هذا عرض تجريبي",
   "menu_send_review": "إرسال",
-
   "menu_feedbacks_title": "التقييمات",
   "menu_feedbacks_tooltip": "إدارة تقييمات العملاء",
-
   "menu_select_language": "اختر اللغة",
   "menu_language_required": "اللغة مطلوبة",
   "menu_add_language": "إضافة لغة",
-
   "menu_languages_title": "اللغات",
   "menu_languages_tooltip": "حتى 6 لغات في البريميوم",
-
   "menu_main_language_locked": "لا يمكن حذف اللغة الأساسية",
-
   "menu_open_close_hours_title": "ساعات العمل",
   "menu_open_close_hours_tooltip": "تحديد أوقات العمل",
-
   "menu_from": "من",
   "menu_to": "إلى",
   "menu_opening_time_for": "وقت الفتح لـ",
   "menu_closing_time_for": "وقت الإغلاق لـ",
-
   "menu_social_media_title": "وسائل التواصل",
   "menu_social_media_tooltip": "إضافة روابط",
-
   "menu_add_link": "إضافة رابط",
   "menu_social_media_validation_hint": "تأكد من إدخال الأيقونة والرابط",
   "menu_link_url": "رابط",
   "menu_media_url_required": "الرابط مطلوب",
   "menu_save_media": "حفظ",
-
   "menu_badges": "شارات",
   "menu_new_item": "جديد",
   "menu_add_percentage_value": "إضافة نسبة",
@@ -394,28 +312,21 @@
   "menu_images": "صور",
   "menu_prices": "أسعار",
   "menu_types": "أنواع",
-
   "menu_cannot_leave_empty_fields": "لا يمكن ترك الحقول فارغة",
   "menu_enter_price_label": "أدخل تسمية السعر",
   "menu_enter_price_amount": "أدخل السعر",
   "menu_add": "إضافة",
   "menu_edit_s": "تعديل",
-
   "menu_item_images_overflow_warning": "عدد الصور تجاوز الحد المسموح",
-
   "menu_item_active": "العنصر مفعل",
   "menu_item_inactive": "العنصر غير مفعل",
- "menu_active": "مفعل",
+  "menu_active": "مفعل",
   "menu_inactive": "غير مفعل",
-
   "menu_new": "جديد",
   "menu_offer_b": "عرض",
-
   "menu_item_required_fields": "يجب إدخال الاسم والوصف والسعر",
-
   "menu_add_item_s": "إضافة عنصر",
   "menu_edit_item": "تعديل عنصر",
-
   "menu_item_order": "ترتيب العنصر",
   "menu_title_cannot_be_empty": "العنوان مطلوب",
   "menu_enter_type": "أدخل النوع",

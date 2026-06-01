@@ -8,7 +8,7 @@ class Pay {
   Future<dynamic> createCheckout(List<String> items) async {
     try {
       final token = await readToken();
-      final response = dio.post('/payment/create-checkout',
+      final response = await dio.post('/payment/create-checkout',
           options: Options(
             headers: {'Authorization': 'Bearer $token'},
           ),

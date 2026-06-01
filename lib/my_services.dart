@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:moonlinks/api/auth_service.dart';
 import 'package:moonlinks/api/pay.dart';
+import 'package:moonlinks/catalogue/pages/catalogue_main.dart';
 import 'package:moonlinks/elements/add_ons.dart';
 import 'package:moonlinks/elements/upgradable.dart';
 import 'package:moonlinks/functions/context_extension.dart';
@@ -9,6 +10,7 @@ import 'package:moonlinks/functions/secure_storage.dart';
 import 'package:moonlinks/l10n/app_localizations.dart';
 import 'package:moonlinks/menu/elements/z_custom/custom_menu_button.dart';
 import 'package:moonlinks/menu/pages/menu_main.dart';
+import 'package:moonlinks/pages/services/catalogue.dart';
 import 'package:moonlinks/pages/services/menu.dart';
 import 'package:moonlinks/utils/subscribed_services_riverpod.dart';
 
@@ -90,12 +92,22 @@ class _MyServicesState extends ConsumerState<MyServices> {
                                                   ? Navigator.push(
                                                       context,
                                                       MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              MenuMain(
-                                                                subscribedServiceId:
-                                                                    plan[
-                                                                        'subscribedserviceId'],
-                                                              )))
+                                                          builder: (context) => plan[
+                                                                      'name']
+                                                                  .toString()
+                                                                  .toLowerCase()
+                                                                  .contains(
+                                                                      'menu generator')
+                                                              ? MenuMain(
+                                                                  subscribedServiceId:
+                                                                      plan[
+                                                                          'subscribedserviceId'],
+                                                                )
+                                                              : CatalogueMain(
+                                                                  subscribedServiceId:
+                                                                      plan[
+                                                                          'subscribedserviceId'],
+                                                                )))
                                                   : ScaffoldMessenger.of(
                                                           context)
                                                       .showSnackBar(SnackBar(
@@ -236,8 +248,13 @@ class _MyServicesState extends ConsumerState<MyServices> {
                                                                 s['name']
                                                                     .toString()
                                                                     .toLowerCase()
-                                                                    .contains(
-                                                                        'menu generator') &&
+                                                                    .contains(plan['name']
+                                                                            .toString()
+                                                                            .toLowerCase()
+                                                                            .contains(
+                                                                                'menu generator')
+                                                                        ? 'menu generator'
+                                                                        : 'catalogue') &&
                                                                 s['is_active'] ==
                                                                     1);
 
@@ -382,15 +399,20 @@ class _MyServicesState extends ConsumerState<MyServices> {
                                                                   context)!
                                                               .resubscribe,
                                                       onPressed: () {
-                                                        final hasActivePlan =
-                                                            services.any((s) =>
-                                                                s['name']
-                                                                    .toString()
-                                                                    .toLowerCase()
-                                                                    .contains(
-                                                                        'menu generator') &&
-                                                                s['is_active'] ==
-                                                                    1);
+                                                        final hasActivePlan = services.any((s) =>
+                                                            s['name']
+                                                                .toString()
+                                                                .toLowerCase()
+                                                                .contains(plan[
+                                                                            'name']
+                                                                        .toString()
+                                                                        .toLowerCase()
+                                                                        .contains(
+                                                                            'menu generator')
+                                                                    ? 'menu generator'
+                                                                    : 'catalogue') &&
+                                                            s['is_active'] ==
+                                                                1);
 
                                                         if (hasActivePlan) {
                                                           ScaffoldMessenger.of(
@@ -409,9 +431,14 @@ class _MyServicesState extends ConsumerState<MyServices> {
                                                         Navigator.push(
                                                             context,
                                                             MaterialPageRoute(
-                                                                builder:
-                                                                    (context) =>
-                                                                        const Menu()));
+                                                                builder: (context) => plan[
+                                                                            'name']
+                                                                        .toString()
+                                                                        .toLowerCase()
+                                                                        .contains(
+                                                                            'menu generator')
+                                                                    ? const Menu()
+                                                                    : const Catalogue()));
                                                       })
                                               : const SizedBox.shrink(),
                                           plan['name']

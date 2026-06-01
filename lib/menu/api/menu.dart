@@ -1,8 +1,8 @@
 import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
+import 'package:moonlinks/api/dio_client.dart';
 import 'package:moonlinks/functions/secure_storage.dart';
-import '../../api/dio_client.dart';
 
 class MenuService {
   final dio = DioClient.dio;

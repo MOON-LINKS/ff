@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:moonlinks/api/auth_service.dart';
@@ -105,35 +108,40 @@ class _LoggedState extends ConsumerState<Logged> {
             CustomButton(
                 function: logout, name: AppLocalizations.of(context)!.logout),
             const SizedBox(height: 15),
-            ElevatedButton.icon(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.purple,
-                foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-              ),
-              icon: const Icon(Icons.credit_card),
-              label: Text(AppLocalizations.of(context)!.manage_payment_methods),
-              onPressed: () async {
-                try {
-                  final response = await paymentAPI.managePaymentMethods();
-                  final url = Uri.parse(response['url']);
-                  if (await canLaunchUrl(url)) {
-                    await launchUrl(url, mode: LaunchMode.externalApplication);
-                  }
-                } catch (e) {
-                  if (context.mounted) {
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(
-                          AppLocalizations.of(context)!.delete_account_error),
-                      backgroundColor: Colors.red,
-                    ));
-                  }
-                }
-              },
-            ),
+            (kIsWeb || !Platform.isIOS)
+                ? ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.purple,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 24, vertical: 14),
+                    ),
+                    icon: const Icon(Icons.credit_card),
+                    label: Text(
+                        AppLocalizations.of(context)!.manage_payment_methods),
+                    onPressed: () async {
+                      try {
+                        final response =
+                            await paymentAPI.managePaymentMethods();
+                        final url = Uri.parse(response['url']);
+                        if (await canLaunchUrl(url)) {
+                          await launchUrl(url,
+                              mode: LaunchMode.externalApplication);
+                        }
+                      } catch (e) {
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text(AppLocalizations.of(context)!
+                                .delete_account_error),
+                            backgroundColor: Colors.red,
+                          ));
+                        }
+                      }
+                    },
+                  )
+                : const SizedBox.shrink(),
           ],
         ),
       ),

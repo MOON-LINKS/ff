@@ -127,6 +127,12 @@ abstract class AppLocalizations {
   /// **'MENU'**
   String get menu;
 
+  /// No description provided for @catalogue.
+  ///
+  /// In en, this message translates to:
+  /// **'CATALOGUE'**
+  String get catalogue;
+
   /// No description provided for @generator.
   ///
   /// In en, this message translates to:
@@ -240,6 +246,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Whether you run a small café, a busy restaurant, or a fully online food service, our Menu Generator Tool is made for you. It is simple, flexible, and easy to use, giving you the freedom to create menus that truly reflect your brand. With built-in online hosting, your customers can always see your latest menu wherever they are. Explore our plans and choose the one that fits your business best, because every restaurant deserves a menu as unique as its food.'**
   String get menu_description;
+
+  /// No description provided for @catalogue_description.
+  ///
+  /// In en, this message translates to:
+  /// **'Whether you run a boutique, a retail store, or a product-based business, our Catalogue Tool is made for you. It is simple, flexible, and easy to use, giving you the freedom to showcase your products in a way that truly reflects your brand. With built-in online hosting, your customers can always browse your latest catalogue wherever they are. Explore our plans and choose the one that fits your business best, because every brand deserves a catalogue as unique as its products.'**
+  String get catalogue_description;
 
   /// No description provided for @plans.
   ///
