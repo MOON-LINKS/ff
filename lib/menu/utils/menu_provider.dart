@@ -104,7 +104,7 @@ final menuProvider =
   final hiveImagecounter = getMenuData('image_counter') ?? 0;
   final hiveAddOn = getMenuData('addons_images') ??
       {'quantity': 0, 'status': 'inactive', 'ends_at': null};
-  final hiveChosenLanguage = getMenuData('language_chosen') ?? 'lang0';
+  //final hiveChosenLanguage = getMenuData('language_chosen') ?? 'lang0';
   final initialHive = {
     'payload': hivePayload,
     'features': hiveFeatures,
@@ -113,7 +113,7 @@ final menuProvider =
     'image_counter': hiveImagecounter,
     'name': hiveName,
     'addons_images': hiveAddOn,
-    'language_chosen': hiveChosenLanguage
+    //'language_chosen': hiveChosenLanguage
   };
   return MenuNotifier(initialHive);
 });
@@ -127,7 +127,70 @@ class MenuNotifier extends StateNotifier<Map<String, dynamic>> {
 
   Future<void> resetAll() async {
     await getMenuBox().clear();
-    state = Map<String, dynamic>.from(_initialState);
+    state = {
+      'payload': {
+        'categories': [],
+        'logo': '',
+        'bio': '',
+        'banner': '',
+        'inner-banner': '',
+        'offer': '',
+        'loader': '',
+        'font': '',
+        'google': '',
+        'order': {
+          'countryISOCode': '',
+          'countryCode': '',
+          'number': '',
+          'platforms': [],
+        },
+        'analytics': 0,
+        'animation': 'none',
+        'design': {
+          'primary-color': 4294967295,
+          'secondary-color': 4294967295,
+          'title-color': 4294967295,
+          'text-color': 4294967295,
+          'category-primary': 4294967295,
+          'category-secondary': 4278190080
+        },
+        'status': 'inactive',
+        'currency': '',
+        'feedback': false,
+        'openclose': {
+          'enabled': false,
+          'hours': [
+            {'day': 'Monday', 'from': null, 'to': null},
+            {'day': 'Tuesday', 'from': null, 'to': null},
+            {'day': 'Wednesday', 'from': null, 'to': null},
+            {'day': 'Thursday', 'from': null, 'to': null},
+            {'day': 'Friday', 'from': null, 'to': null},
+            {'day': 'Saturday', 'from': null, 'to': null},
+            {'day': 'Sunday', 'from': null, 'to': null},
+          ]
+        },
+        'country-branch': {'enabled': false, 'countries': []},
+        'social_media': {'enabled': false, 'media': []},
+        'languages': {
+          'lang0': {'name': 'English', 'code': 'en', 'active': true}
+        },
+        'domain': {
+          'name': '',
+          'status': '',
+          'created_at': '',
+          'dns': {
+            'ns1': '',
+            'ns2': '',
+          }
+        }
+      },
+      'features': {},
+      'meta': {'sameAsDatabase': false, 'isPublished': false},
+      'assets': {'media': [], 'category': []},
+      'image_counter': 0,
+      'name': '',
+      'addons_images': {'quantity': 0, 'status': 'inactive', 'ends_at': null},
+    };
   }
 /*   //image counter
   Future<void> imageCounter() async {
@@ -276,11 +339,11 @@ class MenuNotifier extends StateNotifier<Map<String, dynamic>> {
   }
 
   //language_chosen
-  Future<void> updateChosenLang(String newLangChosen) async {
+/*   Future<void> updateChosenLang(String newLangChosen) async {
     state = {...state, 'language_chosen': newLangChosen};
     await saveMenuData('language_chosen', newLangChosen);
   }
-
+ */
   //features
   Future<void> updateFeatures(Map<String, dynamic> newFeatures) async {
     state = {...state, 'features': newFeatures};
@@ -339,8 +402,6 @@ class MenuNotifier extends StateNotifier<Map<String, dynamic>> {
       }
     };
     await checkItems();
-    //_savePayloadToHive();
-    //await imageCounter();
   }
 
   Future<void> deleteCategory(String categoryUuid) async {
@@ -355,8 +416,6 @@ class MenuNotifier extends StateNotifier<Map<String, dynamic>> {
       }
     };
     await checkItems();
-    //_savePayloadToHive();
-    //await imageCounter();
   }
 
   //subcategory
@@ -400,8 +459,6 @@ class MenuNotifier extends StateNotifier<Map<String, dynamic>> {
       }
     };
     await checkItems();
-    //_savePayloadToHive();
-    //await imageCounter();
   }
 
   Future<void> deleteSubcategory(
@@ -430,8 +487,6 @@ class MenuNotifier extends StateNotifier<Map<String, dynamic>> {
       }
     };
     await checkItems();
-    //_savePayloadToHive();
-    //await imageCounter();
   }
 
   //items
@@ -511,8 +566,6 @@ class MenuNotifier extends StateNotifier<Map<String, dynamic>> {
       }
     };
     await checkItems();
-    //_savePayloadToHive();
-    //await imageCounter();
   }
 
   Future<void> updateItemsOrder(

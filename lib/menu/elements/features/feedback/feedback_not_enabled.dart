@@ -22,7 +22,7 @@ class _FeedbackNotEnabledState extends State<FeedbackNotEnabled> {
         spacing: 10,
         children: [
           CustomTitleSection(
-            margin: 110,
+            margin: 120,
             title: AppLocalizations.of(context)!.menu_feedbacks_title,
             toolTip: AppLocalizations.of(context)!.menu_feedbacks_tooltip,
           ),

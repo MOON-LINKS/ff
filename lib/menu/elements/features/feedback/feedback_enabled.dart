@@ -33,7 +33,7 @@ class _FeedbackEnabledState extends ConsumerState<FeedbackEnabled> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         CustomTitleSection(
-          margin: 110,
+          margin: 120,
           title: AppLocalizations.of(context)!.menu_feedbacks_title,
           toolTip: AppLocalizations.of(context)!.menu_feedbacks_tooltip,
         ),

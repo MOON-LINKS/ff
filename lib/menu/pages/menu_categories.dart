@@ -200,7 +200,8 @@ class _MenuCategories extends ConsumerState<MenuCategories> {
                                     child: CustomCategory(
                                   key: ValueKey(category['uuid']),
                                   hasInventoryFeature: menuState['features']
-                                      ['category_image_enabled'],
+                                          ['category_image_enabled'] ??
+                                      0,
                                   title: category['title'],
                                   icon: category['icon_key'],
                                   imageUrl: category['image_url'],
@@ -248,8 +249,8 @@ class _MenuCategories extends ConsumerState<MenuCategories> {
             key: ValueKey(
                 categorySelected != null ? categorySelected!['uuid'] : 'new'),
             isEditOpen: isEditorOpen,
-            hasInventoryFeature: menuState['features']
-                ['category_image_enabled'],
+            hasInventoryFeature:
+                menuState['features']['category_image_enabled'] ?? 0,
             closeEditor: () {
               closeEditor();
               deleteCategorySelected();

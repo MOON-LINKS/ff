@@ -1,5 +1,9 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:moonlinks/elements/inapp_webview.dart';
 import 'package:moonlinks/functions/context_extension.dart';
 import 'package:moonlinks/l10n/app_localizations.dart';
 import 'package:moonlinks/menu/elements/z_custom/custom_payment_methods.dart';
@@ -96,7 +100,9 @@ class Services extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(height: 10),
-                            CustomPaymentMethods(),
+                            (kIsWeb || !Platform.isIOS)
+                                ? CustomPaymentMethods()
+                                : const SizedBox.shrink(),
                           ],
                         ),
                       ),
@@ -139,7 +145,17 @@ class ServiceBtn extends StatelessWidget {
       ),
       onPressed: () {
         if (isWeb && destination is String) {
-          openExternalUrl(context, destination);
+          if (kIsWeb) {
+            openExternalUrl(context, destination);
+          } else {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => InAppWebView(
+                          title: title,
+                          url: destination,
+                        )));
+          }
         } else if (!isWeb && destination is Widget) {
           Navigator.push(
             context,
