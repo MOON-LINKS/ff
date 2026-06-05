@@ -589,7 +589,6 @@ class MenuNotifier extends StateNotifier<Map<String, dynamic>> {
     final newPayload = Map<String, dynamic>.from(menu);
     state = {...state, 'payload': newPayload};
     await checkItems();
-    //_savePayloadToHive();
   }
 
   Future<void> deleteItem(
@@ -629,8 +628,6 @@ class MenuNotifier extends StateNotifier<Map<String, dynamic>> {
       }
     };
     await checkItems();
-    //_savePayloadToHive();
-    //await imageCounter();
   }
 
   //other info (it will work for name and will be called after the set name is clicked from backend)

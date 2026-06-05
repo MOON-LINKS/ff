@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:moonlinks/api/auth_service.dart';
@@ -137,7 +140,8 @@ class _MyServicesState extends ConsumerState<MyServices> {
                                             ),
                                           ),
                                           const SizedBox(height: 10),
-                                          plan['is_active'] == 1
+                                          plan['is_active'] == 1 &&
+                                                  (kIsWeb || !Platform.isIOS)
                                               ? Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,

@@ -204,6 +204,10 @@ class _MenuItemsState extends ConsumerState<MenuItems> {
                                         items['items'][i]['display_order'] = i;
                                       }
                                     });
+                                    ref
+                                        .read(menuProvider.notifier)
+                                        .updateItemsOrder(
+                                            widget.subcatUuid, widget.catUuid);
                                   },
                                 )))
                         : Text(AppLocalizations.of(context)!.menu_no_items),

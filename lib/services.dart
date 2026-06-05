@@ -62,7 +62,7 @@ class Services extends StatelessWidget {
                               destination: Catalogue(),
                             ),
                             const SizedBox(height: 16),
-                            ServiceBtn(
+                            /*  ServiceBtn(
                               imagePath: "assets/icons/biopage.svg",
                               title: AppLocalizations.of(context)!.biopage,
                               subtitle:
@@ -89,16 +89,19 @@ class Services extends StatelessWidget {
                               destination: "https://moonlinks.me/barcode/main",
                               isWeb: true,
                             ),
-                            const SizedBox(height: 24),
-                            Text(
-                              AppLocalizations.of(context)!
-                                  .secure_payments_supported_by,
-                              style: appTextStyle(
-                                fontSize: 15,
-                                color: const Color.fromARGB(255, 168, 168, 168),
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
+                            const SizedBox(height: 24), */
+                            (kIsWeb || !Platform.isIOS)
+                                ? Text(
+                                    AppLocalizations.of(context)!
+                                        .secure_payments_supported_by,
+                                    style: appTextStyle(
+                                      fontSize: 15,
+                                      color: const Color.fromARGB(
+                                          255, 168, 168, 168),
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  )
+                                : const SizedBox.shrink(),
                             const SizedBox(height: 10),
                             (kIsWeb || !Platform.isIOS)
                                 ? CustomPaymentMethods()
