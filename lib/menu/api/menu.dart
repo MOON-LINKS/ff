@@ -149,7 +149,7 @@ class MenuService {
           });
       return response.data;
     } catch (e) {
-      throw Exception("error adding domain: $e");
+      throw Exception("error checking domain: $e");
     }
   }
 
@@ -163,7 +163,7 @@ class MenuService {
           });
       return response.data;
     } catch (e) {
-      throw Exception("error adding domain: $e");
+      throw Exception("error removing domain: $e");
     }
   }
 
@@ -176,7 +176,7 @@ class MenuService {
       );
       return response.data;
     } catch (e) {
-      throw Exception("error adding domain: $e");
+      throw Exception("error getting domain: $e");
     }
   }
 }

@@ -1,56 +1,61 @@
 import 'package:flutter/material.dart';
+import 'package:moonlinks/catalogue/elements/catalogue_image_picker.dart';
 import 'package:moonlinks/l10n/app_localizations.dart';
-import 'package:moonlinks/menu/elements/image_picker.dart';
 import 'package:moonlinks/menu/elements/z_custom/custom_menu_button.dart';
 
-class CustomLogo extends StatefulWidget {
-  final String logo;
-  final Function(String) logoChange;
-  const CustomLogo({super.key, required this.logo, required this.logoChange});
+class CustomCatalogueImg extends StatefulWidget {
+  final String img;
+  final Function(String) imgChange;
+  final double aspectRatio;
+  const CustomCatalogueImg(
+      {super.key,
+      required this.img,
+      required this.imgChange,
+      required this.aspectRatio});
 
   @override
-  State<CustomLogo> createState() => _CustomLogoState();
+  State<CustomCatalogueImg> createState() => _CustomCatalogueImgState();
 }
 
-class _CustomLogoState extends State<CustomLogo> {
-  late String logoUrl;
+class _CustomCatalogueImgState extends State<CustomCatalogueImg> {
+  late String imgUrl;
   @override
   void initState() {
     super.initState();
-    logoUrl = widget.logo;
+    imgUrl = widget.img;
   }
 
   @override
-  void didUpdateWidget(covariant CustomLogo oldWidget) {
+  void didUpdateWidget(covariant CustomCatalogueImg oldWidget) {
     super.didUpdateWidget(oldWidget);
 
-    if (oldWidget.logo != widget.logo) {
+    if (oldWidget.img != widget.img) {
       setState(() {
-        logoUrl = widget.logo;
+        imgUrl = widget.img;
       });
     }
   }
 
   void pickImage() async {
-    final url = await customPickImage(context, 1);
+    final url = await catalogueCustomPickImage(context, 1);
     if (url.isNotEmpty) {
       setState(() {
-        logoUrl = url;
-        widget.logoChange(logoUrl);
+        imgUrl = url;
+        widget.imgChange(imgUrl);
       });
     }
   }
 
-  void deleteLogo() async {
+  void deleteImg() async {
     setState(() {
-      logoUrl = '';
-      widget.logoChange(logoUrl);
+      imgUrl = '';
+      widget.imgChange(imgUrl);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return logoUrl != ''
+    return imgUrl != ''
         ? Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -59,7 +64,7 @@ class _CustomLogoState extends State<CustomLogo> {
               ClipRRect(
                   borderRadius: BorderRadiusGeometry.circular(100),
                   child: Image.network(
-                    '$customServerName$logoUrl',
+                    '$customServerName$imgUrl',
                     width: 200,
                     height: 200,
                     fit: BoxFit.cover,
@@ -77,7 +82,7 @@ class _CustomLogoState extends State<CustomLogo> {
                     height: 10,
                   ),
                   CustomMenuButton(
-                      onPressed: deleteLogo,
+                      onPressed: deleteImg,
                       child: AppLocalizations.of(context)!.menu_delete)
                 ],
               )

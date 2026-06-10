@@ -2,7 +2,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 const String catalogueBox = 'catalogueBox';
 
-Future<void> initCatalogue() async {
+Future<void> initCatalogueHive() async {
   await Hive.initFlutter();
   await Hive.openBox(catalogueBox);
 }

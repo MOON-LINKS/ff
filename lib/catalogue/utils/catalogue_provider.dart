@@ -242,16 +242,7 @@ class CatalogueNotifier extends StateNotifier<Map<String, dynamic>> {
             'ns2': '',
           }
         },
-        "saved_templates": [
-          {
-            "id": "tpl_001",
-            "name": "T-Shirt",
-            "parameters": [
-              {"id": "prm_001", "name": "Color", "type": "color"},
-              {"id": "prm_002", "name": "Size", "type": "text"}
-            ]
-          }
-        ]
+        "saved_templates": []
       },
       'features': {},
       'meta': {'sameAsDatabase': false, 'isPublished': false},
@@ -480,7 +471,18 @@ class CatalogueNotifier extends StateNotifier<Map<String, dynamic>> {
   }
 
   //categories order
-  Future<void> updateCategoriesOrder() async {}
+  Future<void> updateCategoriesOrder() async {
+    final catalogue = state['payload'];
+    final categories = catalogue['categories'];
+    for (int i = 0; i < categories.length; i++) {
+      categories[i]['display_order'] = i;
+    }
+    categories.sort((a, b) => a['display_order'].compareTo(b['display_order']));
+    final newPayload = Map<String, dynamic>.from(catalogue);
+    state = {...state, 'payload': newPayload};
+    await checkItems();
+  }
+
   //subcategory
   //add modify subcategory
   Future<void> addOrModifySubcategory(String subcategoryUuid,
@@ -535,7 +537,23 @@ class CatalogueNotifier extends StateNotifier<Map<String, dynamic>> {
   }
 
   //subcategories order
-  Future<void> updateSubcategoriesOrder(String categoryUuid) async {}
+  Future<void> updateSubcategoriesOrder(String categoryUuid) async {
+    final catalogue = state['payload'];
+    final categoryIndex =
+        catalogue['categories'].indexWhere((c) => c['uuid'] == categoryUuid);
+    if (categoryIndex == -1) return;
+    final subcategories =
+        catalogue['categories'][categoryIndex]['subcategories'];
+    for (int i = 0; i < subcategories.length; i++) {
+      subcategories[i]['display_order'] = i;
+    }
+    subcategories
+        .sort((a, b) => a['display_order'].compareTo(b['display_order']));
+    final newPayload = Map<String, dynamic>.from(catalogue);
+    state = {...state, 'payload': newPayload};
+    await checkItems();
+  }
+
   //items
   //add modify item
   Future<void> addOrModifyItem(
@@ -636,9 +654,21 @@ class CatalogueNotifier extends StateNotifier<Map<String, dynamic>> {
   //items order
   Future<void> updateItemsOrder(
       String subcategoryUuid, String categoryUuid) async {
-    final menu = state['payload'];
-
-    final newPayload = Map<String, dynamic>.from(menu);
+    final catalogue = state['payload'];
+    final categoryIndex =
+        catalogue['categories'].indexWhere((c) => c['uuid'] == categoryUuid);
+    if (categoryIndex == -1) return;
+    final subcategories =
+        catalogue['categories'][categoryIndex]['subcategories'];
+    final subcategoryIndex =
+        subcategories.indexWhere((s) => s['uuid'] == subcategoryUuid);
+    if (subcategoryIndex == -1) return;
+    final List items = subcategories[subcategoryIndex]['items'];
+    for (int i = 0; i < items.length; i++) {
+      items[i]['display_order'] = i;
+    }
+    items.sort((a, b) => a['display_order'].compareTo(b['display_order']));
+    final newPayload = Map<String, dynamic>.from(catalogue);
     state = {...state, 'payload': newPayload};
     await checkItems();
   }

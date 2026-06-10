@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moonlinks/api/auth_service.dart';
+import 'package:moonlinks/catalogue/utils/hive.dart';
 import 'package:moonlinks/elements/cart/cart.dart';
 import 'package:moonlinks/elements/cart/cart_container.dart';
 import 'package:moonlinks/elements/nav_bottom.dart';
@@ -21,6 +22,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initCartHive();
   await initMenuHive();
+  await initCatalogueHive();
   await initsubServicesHive();
   await initLocaleHive();
   runApp(const ProviderScope(child: MyApp()));
