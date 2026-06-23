@@ -36,7 +36,7 @@ class _CatalogueState extends ConsumerState<Catalogue> {
     //loadPlans();
   }
 
-  Future<void> loadPlans() async {
+  /*  Future<void> loadPlans() async {
     final response = await serviceDb.getServicePlan();
     final services = response['services'] as List;
     final filtered = services
@@ -61,11 +61,11 @@ class _CatalogueState extends ConsumerState<Catalogue> {
 
   void addToCart(Map<String, dynamic> item) {
     ref.read(cartProvider.notifier).addToCart(item);
-  }
+  } */
 
   @override
   Widget build(BuildContext context) {
-/*     final cart = ref.watch(cartProvider);
+    final cart = ref.watch(cartProvider);
     final cartServices = cart.map((p) => p['service_code']).toList();
     final subscribedServices = ref.watch(subServicesProvider);
     ServiceStatus getServiceStatus() {
@@ -99,7 +99,7 @@ class _CatalogueState extends ConsumerState<Catalogue> {
       case ServiceStatus.recharge:
         text = AppLocalizations.of(context)!.recharge_plan;
         break;
-    } */
+    }
     return Scaffold(
         appBar: const CustomAppBar(
           haveIcon: true,
@@ -136,7 +136,7 @@ class _CatalogueState extends ConsumerState<Catalogue> {
                   'COMING SOON!',
                   style: TextStyle(fontSize: 25),
                 )
-                /* (kIsWeb || !Platform.isIOS)
+                /*  (kIsWeb || !Platform.isIOS)
                     ? Padding(
                         padding: EdgeInsetsGeometry.symmetric(vertical: 40),
                         child: Container(

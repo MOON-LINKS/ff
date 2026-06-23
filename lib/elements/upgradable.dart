@@ -31,6 +31,7 @@ class _UpgradableState extends ConsumerState<Upgradable> {
   final payAPI = Pay();
   List<Map<String, dynamic>> plans = [];
   bool _loading = false;
+  bool _isUpgrading = false;
 
   @override
   void didUpdateWidget(covariant Upgradable oldWidget) {
@@ -86,7 +87,8 @@ class _UpgradableState extends ConsumerState<Upgradable> {
           color: Color.fromARGB(209, 158, 158, 158),
         ),
         child: Center(
-          child: Column(
+            child: Stack(children: [
+          Column(
             children: [
               const SizedBox(height: 25),
               CustomMenuButton(
@@ -165,6 +167,9 @@ class _UpgradableState extends ConsumerState<Upgradable> {
                                             ),
                                             CustomMenuButton(
                                                 onPressed: () async {
+                                                  setState(() =>
+                                                      _isUpgrading = true);
+                                                  Navigator.pop(context);
                                                   try {
                                                     final response =
                                                         await payAPI.upgradePlan(
@@ -176,6 +181,7 @@ class _UpgradableState extends ConsumerState<Upgradable> {
                                                             plan[
                                                                 'stripe_price_id'],
                                                             priceToPay);
+
                                                     if (response['success'] ==
                                                         true) {
                                                       final token =
@@ -185,10 +191,19 @@ class _UpgradableState extends ConsumerState<Upgradable> {
                                                             ref, token);
                                                       }
                                                     }
-                                                    widget.close();
                                                   } catch (e) {
                                                     debugPrint(
                                                         'Upgrade failed: $e');
+                                                  } finally {
+                                                    if (mounted) {
+                                                      setState(() =>
+                                                          _isUpgrading = false);
+                                                      await Future.delayed(
+                                                          Duration(
+                                                              milliseconds:
+                                                                  300));
+                                                      widget.close();
+                                                    }
                                                   }
                                                 },
                                                 child: AppLocalizations.of(
@@ -207,7 +222,16 @@ class _UpgradableState extends ConsumerState<Upgradable> {
                 ),
             ],
           ),
-        ),
+          _isUpgrading
+              ? Positioned.fill(
+                  child: Container(
+                  color: const Color.fromARGB(151, 0, 0, 0),
+                  child: const Center(
+                    child: CircularProgressIndicator(color: Colors.white),
+                  ),
+                ))
+              : const SizedBox.shrink()
+        ])),
       ),
     ));
   }

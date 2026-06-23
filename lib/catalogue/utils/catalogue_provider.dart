@@ -437,7 +437,7 @@ class CatalogueNotifier extends StateNotifier<Map<String, dynamic>> {
         category['title'] = title;
         category['icon_key'] = iconKey;
         category['image_url'] = imageUrl;
-        category['display_order'] = order;
+
         found = true;
         break;
       }
@@ -448,7 +448,8 @@ class CatalogueNotifier extends StateNotifier<Map<String, dynamic>> {
         'title': title,
         'icon_key': iconKey,
         'image_url': imageUrl,
-        'display_order': order
+        'display_order': categories.length,
+        'subcategories': [],
       });
     }
     state = {
@@ -472,15 +473,43 @@ class CatalogueNotifier extends StateNotifier<Map<String, dynamic>> {
 
   //categories order
   Future<void> updateCategoriesOrder() async {
-    final catalogue = state['payload'];
-    final categories = catalogue['categories'];
+    final categories = List<Map<String, dynamic>>.from(
+        (state['payload']['categories'] as List)
+            .map((e) => Map<String, dynamic>.from(e)));
+    categories.sort(
+        (a, b) => (a['display_order'] ?? 0).compareTo(b['display_order'] ?? 0));
+    state = {
+      ...state,
+      'payload': {
+        ...state['payload'],
+        'categories': categories,
+      }
+    };
+    await checkItems();
+  }
+
+  Future<void> reorderCategories(int oldIndex, int newIndex) async {
+    final categories = List<Map<String, dynamic>>.from(
+        ((state['payload']['categories'] as List?) ?? [])
+            .map((e) => Map<String, dynamic>.from(e)));
+    categories.sort(
+        (a, b) => (a['display_order'] ?? 0).compareTo(b['display_order'] ?? 0));
+
+    final moved = categories.removeAt(oldIndex);
+    categories.insert(newIndex, moved);
+
     for (int i = 0; i < categories.length; i++) {
       categories[i]['display_order'] = i;
     }
-    categories.sort((a, b) => a['display_order'].compareTo(b['display_order']));
-    final newPayload = Map<String, dynamic>.from(catalogue);
-    state = {...state, 'payload': newPayload};
-    await checkItems();
+
+    state = {
+      ...state,
+      'payload': {
+        ...state['payload'],
+        'categories': categories,
+      }
+    };
+    await _savePayloadToHive();
   }
 
   //subcategory

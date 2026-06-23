@@ -63,6 +63,34 @@ class CatalogueApi {
     }
   }
 
+  Future<dynamic> payAddOns(int quantity) async {
+    try {
+      final token = await readToken();
+      final response = await dio.post('/catalogue/add-ons-checkout',
+          data: {"quantity": quantity},
+          options: Options(headers: {'Authorization': 'Bearer $token'}));
+      return response.data;
+    } catch (e) {
+      throw Exception('error: $e');
+    }
+  }
+
+  Future<dynamic> upgradeAddOn(
+      String stripeItemId, int additionalQuantity) async {
+    try {
+      final token = await readToken();
+      final response = await dio.post('/catalogue/add-ons-upgrade',
+          data: {
+            "stripe_item_id": stripeItemId,
+            "additionalQuantity": additionalQuantity
+          },
+          options: Options(headers: {'Authorization': 'Bearer $token'}));
+      return response.data;
+    } catch (e) {
+      throw Exception('error: $e');
+    }
+  }
+
   Future<dynamic> getAnalytics() async {
     try {
       final token = await readToken();
@@ -92,7 +120,12 @@ class CatalogueApi {
 
   Future<Map<String, List<String>>> getAssets() async {
     final response = await dio.get('/catalogue/assets');
-
+    if (response.data['assets'] == null) {
+      return {
+        'media': [],
+        'category': [],
+      };
+    }
     final List<String> media = [];
     final List<String> category = [];
 

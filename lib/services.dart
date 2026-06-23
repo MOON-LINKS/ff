@@ -62,7 +62,7 @@ class Services extends StatelessWidget {
                               destination: Catalogue(),
                             ),
                             const SizedBox(height: 16),
-                            ServiceBtn(
+                            /*  ServiceBtn(
                               imagePath: "assets/icons/biopage.svg",
                               title: AppLocalizations.of(context)!.biopage,
                               subtitle:
@@ -88,7 +88,7 @@ class Services extends StatelessWidget {
                                   AppLocalizations.of(context)!.free_generator,
                               destination: "https://moonlinks.me/barcode/main",
                               isWeb: true,
-                            ),
+                            ), */
                             const SizedBox(height: 24),
                             (kIsWeb || !Platform.isIOS)
                                 ? Text(

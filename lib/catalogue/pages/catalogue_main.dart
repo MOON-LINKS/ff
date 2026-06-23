@@ -4,11 +4,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:moonlinks/catalogue/api/catalogue_api.dart';
 import 'package:moonlinks/catalogue/elements/custom_catalogue_publishbar.dart';
-import 'package:moonlinks/catalogue/elements/custom_catalogue_logo.dart';
+import 'package:moonlinks/catalogue/elements/custom_catalogue_img.dart';
+import 'package:moonlinks/catalogue/elements/features/analytics/catalogue_analytics_enabled.dart';
+import 'package:moonlinks/catalogue/elements/features/analytics/catalogue_analytics_not_enabled.dart';
+import 'package:moonlinks/catalogue/elements/features/animation/catalogue_animation_enabled.dart';
+import 'package:moonlinks/catalogue/elements/features/animation/catalogue_animation_not_enabled.dart';
+import 'package:moonlinks/catalogue/elements/features/countrybranch/catalogue_countrybranch_enabled.dart';
+import 'package:moonlinks/catalogue/elements/features/countrybranch/catalogue_countrybranch_not_enabled.dart';
+import 'package:moonlinks/catalogue/elements/features/feedback/catalogue_feedback_enabled.dart';
+import 'package:moonlinks/catalogue/elements/features/feedback/catalogue_feedback_not_enabled.dart';
+import 'package:moonlinks/catalogue/elements/features/language/catalogue_language_enabled.dart';
+import 'package:moonlinks/catalogue/elements/features/language/catalogue_language_not_enabled.dart';
+import 'package:moonlinks/catalogue/elements/features/openclose/catalogue_openclose_enabled.dart';
+import 'package:moonlinks/catalogue/elements/features/openclose/catalogue_openclose_not_enabled.dart';
+import 'package:moonlinks/catalogue/elements/features/socialmedia/catalogue_socialmedia_enabled.dart';
+import 'package:moonlinks/catalogue/elements/features/socialmedia/catalogue_socialmedia_not_enabled.dart';
 import 'package:moonlinks/catalogue/pages/catalogue_categories.dart';
 import 'package:moonlinks/catalogue/pages/catalogue_domains.dart';
 import 'package:moonlinks/catalogue/utils/catalogue_provider.dart';
 import 'package:moonlinks/l10n/app_localizations.dart';
+import 'package:moonlinks/menu/elements/menu_font_selector.dart';
 import 'package:moonlinks/menu/elements/z_custom/custom_color_picker.dart';
 import 'package:moonlinks/menu/elements/z_custom/custom_divider.dart';
 import 'package:moonlinks/menu/elements/z_custom/custom_google_acc.dart';
@@ -28,16 +43,118 @@ class CatalogueMain extends ConsumerStatefulWidget {
 
 class _CatalogueMainState extends ConsumerState<CatalogueMain> {
   final catalogueService = CatalogueApi();
+  dynamic deepNormalize(dynamic value) {
+    if (value is Map) {
+      return Map<String, dynamic>.fromEntries(
+        value.entries.map(
+          (e) => MapEntry(
+            e.key.toString(),
+            deepNormalize(e.value),
+          ),
+        ),
+      );
+    }
 
+    if (value is List) {
+      return value.map(deepNormalize).toList();
+    }
+
+    return value;
+  }
+
+  TextEditingController nameController = TextEditingController();
+  TextEditingController bioController = TextEditingController();
+  TextEditingController currencyController = TextEditingController();
+  String bioText = '';
+  Future<void> _initCatalogue() async {
+    final notifier = ref.read(catalogueProvider.notifier);
+
+    final snapshot =
+        await catalogueService.getCatalogueSnapshot(widget.subscribedServiceId);
+
+    final snapshotData = snapshot['snapshot'];
+    print(snapshotData);
+    if (snapshotData != null) {
+      final rawPayload = snapshotData['payload'];
+      if (rawPayload == null) return;
+      dynamic decoded =
+          rawPayload is String ? jsonDecode(rawPayload) : rawPayload;
+
+      final Map<String, dynamic> payload =
+          deepNormalize(decoded) as Map<String, dynamic>;
+      ref.read(catalogueProvider.notifier).updateCatalogue(payload);
+      bioText = payload['bio'] ?? '';
+      bioController.text = bioText;
+      currencyController.text = payload['currency'] ?? '';
+    }
+
+    final addOnsResponse = await catalogueService.getAddOns();
+    final addOns = addOnsResponse['data'];
+    notifier.updateAddOns({
+      'quantity': addOns['quantity'],
+      'status': addOns['status'],
+      'ends_at': addOns['ends_at'] != null
+          ? addOns['ends_at'].toString().split('T').first
+          : ''
+    });
+    ref.read(catalogueProvider.notifier).updateName(snapshot['name'] ?? '');
+
+    await notifier.updateMeta('sameAsDatabase', true);
+    final features = snapshot['features'];
+    final featureMap = {
+      for (var f in features) f['feature_key'].toString(): f['feature_value']
+    };
+
+    if (features != null) {
+      notifier.updateFeatures(featureMap);
+    }
+
+    final assets = await catalogueService.getAssets();
+    notifier.updateAssets(assets);
+    await notifier.checkItems();
+
+    nameController.text = snapshot['name'] ?? '';
+    if (notifier.canUseFeature('analytics')) {
+      notifier.addOrUpdateInfo('analytics', 1);
+    } else {
+      notifier.addOrUpdateInfo('analytics', 0);
+    }
+  }
+
+  void setName(String name) async {
+    try {
+      if (formKey.currentState!.validate()) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+              content:
+                  Text(AppLocalizations.of(context)!.menu_checking_inputs)),
+        );
+        final response = await catalogueService.setName(name);
+        final text = response['message'];
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(text)),
+        );
+        if (response['status'] == 200) {
+          await ref.read(catalogueProvider.notifier).updateName(name);
+        }
+      }
+    } catch (e) {
+      throw Exception('couldnt set name: $e');
+    }
+  }
+
+  final formKey = GlobalKey<FormState>();
   @override
   void initState() {
     super.initState();
-    //_initCatalogue();
+    _initCatalogue();
   }
 
   @override
   void dispose() {
-    //controller.dispose();
+    nameController.dispose();
+    currencyController.dispose();
+    bioController.dispose();
     super.dispose();
   }
 
@@ -62,6 +179,47 @@ class _CatalogueMainState extends ConsumerState<CatalogueMain> {
                               horizontal: 20, vertical: 10),
                           child: Column(children: [
                             const SizedBox(height: 50),
+                            CustomTitleSection(
+                                title: AppLocalizations.of(context)!.menu_name,
+                                toolTip: AppLocalizations.of(context)!
+                                    .menu_name_unique_hint,
+                                margin: 80),
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            Form(
+                                key: formKey,
+                                child: Column(
+                                  children: [
+                                    CustomMenuInput(
+                                      function: (val) {},
+                                      hintText: AppLocalizations.of(context)!
+                                          .menu_resto_name_hint,
+                                      controller: nameController,
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return AppLocalizations.of(context)!
+                                              .field_required;
+                                        }
+                                        if (value.contains(
+                                            RegExp(r'[^A-Za-z0-9-]'))) {
+                                          return AppLocalizations.of(context)!
+                                              .menu_name_validation;
+                                        }
+                                        return null;
+                                      },
+                                    ),
+                                    const SizedBox(
+                                      height: 15,
+                                    ),
+                                    CustomMenuButton(
+                                        onPressed: () =>
+                                            setName(nameController.text),
+                                        child: AppLocalizations.of(context)!
+                                            .menu_set_name),
+                                  ],
+                                )),
+
                             const CustomDivider(),
                             //domain section
                             CustomTitleSection(
@@ -112,13 +270,13 @@ class _CatalogueMainState extends ConsumerState<CatalogueMain> {
                             const SizedBox(
                               height: 15,
                             ),
-                            /*  CustomMenuInput(
+                            CustomMenuInput(
                               controller: bioController,
                               function: (value) {
                                 catalogueNotifier.addOrUpdateInfo('bio', value);
                               },
                               hintText: AppLocalizations.of(context)!.menu_bio,
-                            ), */
+                            ),
                             const SizedBox(
                               height: 15,
                             ),
@@ -282,15 +440,17 @@ class _CatalogueMainState extends ConsumerState<CatalogueMain> {
 
                             const SizedBox(height: 15),
 
-                            /*    CustomMenuInput(
-                    controller: currencyController,
-                    function: (value) {
-                      catalogueNotifier.addOrUpdateInfo('currency', value);
-                    },
-                    hintText: AppLocalizations.of(context)!.menu_currency_input,
-                    tooltipMessage:
-                        AppLocalizations.of(context)!.menu_currency_hint,
-                  ), */
+                            CustomMenuInput(
+                              controller: currencyController,
+                              function: (value) {
+                                catalogueNotifier.addOrUpdateInfo(
+                                    'currency', value);
+                              },
+                              hintText: AppLocalizations.of(context)!
+                                  .menu_currency_input,
+                              tooltipMessage: AppLocalizations.of(context)!
+                                  .menu_currency_hint,
+                            ),
                             const CustomDivider(),
                             //category button
                             CustomMenuButton(
@@ -314,12 +474,13 @@ class _CatalogueMainState extends ConsumerState<CatalogueMain> {
                             const CustomDivider(),
                             //font selector widget
                             //font selector widget
-                            /*    MenuFontSelector(
-                    function: (value) async {
-                      await catalogueNotifier.addOrUpdateInfo('font', value);
-                      ref.read(menuProvider)['payload']['font'];
-                    },
-                  ), */
+                            MenuFontSelector(
+                              function: (value) async {
+                                await catalogueNotifier.addOrUpdateInfo(
+                                    'font', value);
+                                ref.read(catalogueProvider)['payload']['font'];
+                              },
+                            ),
                             const CustomDivider(),
                             //ordering system
                             CustomTitleSection(
@@ -366,7 +527,7 @@ class _CatalogueMainState extends ConsumerState<CatalogueMain> {
                             const CustomDivider(),
                             //featuresCheck
                             //language
-                            /*  catalogueNotifier.getFeatureLimit('language') != 0
+                            catalogueNotifier.getFeatureLimit('language') != 0
                                 ? CatalogueLanguageEnabled()
                                 : CatalogueLanguageNotEnabled(),
                             const CustomDivider(),
@@ -406,7 +567,7 @@ class _CatalogueMainState extends ConsumerState<CatalogueMain> {
                             catalogueNotifier.canUseFeature('analytics')
                                 ? CatalogueAnalyticsEnabled()
                                 : CatalogueAnalyticsNotEnabled(),
-                            const CustomDivider(), */
+                            const CustomDivider(),
                           ]))))),
           CustomCataloguePublishbar(
               link: catalogueState['name'].toString().isNotEmpty

@@ -2,17 +2,17 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:moonlinks/api/service.dart';
+import 'package:moonlinks/catalogue/api/catalogue_api.dart';
 import 'package:moonlinks/l10n/app_localizations.dart';
 import 'package:moonlinks/menu/elements/z_custom/custom_menu_button.dart';
 import 'package:moonlinks/web/webview_screen.dart';
 
-class MenuAddOnCalculator extends StatefulWidget {
+class CatalogueAddOnCalculator extends StatefulWidget {
   final double quantity;
   final String itemId;
   final String status;
   final Function(String) changedStatus;
-  const MenuAddOnCalculator(
+  const CatalogueAddOnCalculator(
       {super.key,
       required this.quantity,
       required this.itemId,
@@ -20,15 +20,17 @@ class MenuAddOnCalculator extends StatefulWidget {
       required this.changedStatus});
 
   @override
-  State<MenuAddOnCalculator> createState() => _MenuAddOnCalculatorState();
+  State<CatalogueAddOnCalculator> createState() =>
+      _CatalogueAddOnCalculatorState();
 }
 
-class _MenuAddOnCalculatorState extends State<MenuAddOnCalculator> {
+class _CatalogueAddOnCalculatorState extends State<CatalogueAddOnCalculator> {
   late double newQuantity;
   late String stripeItemId;
   bool _isProcessing = false;
-  final serviceAPI = ServiceAPI();
+  final catalogueAPI = CatalogueApi();
   final max = 10000.0;
+
   void newQuantityVal(double quantity, String itemId) {
     setState(() {
       newQuantity = quantity;
@@ -43,7 +45,7 @@ class _MenuAddOnCalculatorState extends State<MenuAddOnCalculator> {
     if (widget.itemId == '' && widget.quantity == 0) {
       setState(() => _isProcessing = true);
       try {
-        final response = await serviceAPI.payMenuAddOns(qty);
+        final response = await catalogueAPI.payAddOns(qty);
         if (context.mounted) openExternalUrl(context, response['url']);
       } catch (e) {
         messenger.showSnackBar(SnackBar(
@@ -74,7 +76,7 @@ class _MenuAddOnCalculatorState extends State<MenuAddOnCalculator> {
                         setState(() => _isProcessing = true);
                         try {
                           final response =
-                              await serviceAPI.upgradeMenuAddOn(itemId, qty);
+                              await catalogueAPI.upgradeAddOn(itemId, qty);
                           if (response['url'] != null) {
                             if (context.mounted) {
                               openExternalUrl(context, response['url']);
@@ -82,14 +84,12 @@ class _MenuAddOnCalculatorState extends State<MenuAddOnCalculator> {
                           } else if (response['quantity'] != null) {
                             if (mounted) setState(() => _isProcessing = false);
                             messenger.showSnackBar(SnackBar(
-                              // ✅
                               content: Text(l10n.add_on_updated_successfully),
                               backgroundColor: Colors.green,
                               duration: Duration(seconds: 4),
                             ));
                           } else {
                             messenger.showSnackBar(SnackBar(
-                              // ✅
                               content: Text(response['message'] ??
                                   l10n.delete_account_error),
                               backgroundColor: Colors.red,
@@ -97,7 +97,6 @@ class _MenuAddOnCalculatorState extends State<MenuAddOnCalculator> {
                           }
                         } catch (e) {
                           messenger.showSnackBar(SnackBar(
-                            // ✅
                             content: Text(l10n.delete_account_error),
                             backgroundColor: Colors.red,
                           ));
