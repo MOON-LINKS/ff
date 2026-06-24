@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:moonlinks/api/auth_service.dart';
 import 'package:moonlinks/catalogue/utils/hive.dart';
@@ -57,9 +60,6 @@ class Main extends ConsumerStatefulWidget {
 
 class _MainState extends ConsumerState<Main> {
   Future<void> loadSubscribedServices() async {
-/*     await addToken(
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJzZXNzaW9uSWQiOiI4NjA0ZmJmYi0wNzllLTQ1MWYtOWEzOS1kMGVkMDQyOTUxNTAiLCJpYXQiOjE3Njg5OTQ5NTl9.4Q6ZtaoPaY4bDVfBUgOSEOsxd1Ddn6AICO_UV98-RIg');
- */
     final token = await readToken();
     if (token == null) return;
     try {
@@ -97,12 +97,16 @@ class _MainState extends ConsumerState<Main> {
   }
 
   int _currentIndex = 1;
-  static const List<Widget> _pages = <Widget>[
-    Home(),
-    Services(),
-    MyServices(),
-    Profile()
-  ];
+  List<Widget> get _visiblePages {
+    final showMyServices = kIsWeb || !Platform.isIOS;
+
+    return [
+      const Home(),
+      const Services(),
+      if (showMyServices) const MyServices(),
+      const Profile(),
+    ];
+  }
 
   void _navClicked(int index) {
     setState(() {
@@ -138,7 +142,7 @@ class _MainState extends ConsumerState<Main> {
       ),
       body: Stack(
         children: [
-          _pages[_currentIndex],
+          _visiblePages[_currentIndex],
           !cartOpened
               ? Cart(openCart: () {
                   setState(() {

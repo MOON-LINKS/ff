@@ -512,6 +512,30 @@ class CatalogueNotifier extends StateNotifier<Map<String, dynamic>> {
     await _savePayloadToHive();
   }
 
+  Future<void> reorderSubCategories(int oldIndex, int newIndex) async {
+    final categories = List<Map<String, dynamic>>.from(
+        ((state['payload']['categories'] as List?) ?? [])
+            .map((e) => Map<String, dynamic>.from(e)));
+    categories.sort(
+        (a, b) => (a['display_order'] ?? 0).compareTo(b['display_order'] ?? 0));
+
+    final moved = categories.removeAt(oldIndex);
+    categories.insert(newIndex, moved);
+
+    for (int i = 0; i < categories.length; i++) {
+      categories[i]['display_order'] = i;
+    }
+
+    state = {
+      ...state,
+      'payload': {
+        ...state['payload'],
+        'categories': categories,
+      }
+    };
+    await _savePayloadToHive();
+  }
+
   //subcategory
   //add modify subcategory
   Future<void> addOrModifySubcategory(String subcategoryUuid,

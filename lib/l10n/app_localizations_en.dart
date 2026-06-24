@@ -423,7 +423,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get add_on_updated_successfully => 'Add-on updated successfully.';
 
   @override
-  String get subscribe_via_web => 'To subscribe or manage your plan, please visit app.moonlinks.me from your browser.';
+  String get subscribe_via_web => ' ';
 
   @override
   String get no_plans_to_upgrade => 'No upgrade plans available for this subscription.';
