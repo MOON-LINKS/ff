@@ -1012,4 +1012,19 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get menu_edit_type => 'Modifier le type';
+
+  @override
+  String get item_name => 'Nom de l\'article';
+
+  @override
+  String get item_description => 'Description';
+
+  @override
+  String get item_default_price => 'Prix principal';
+
+  @override
+  String get item_add_parameter => 'Ajouter un paramètre';
+
+  @override
+  String get item_save => 'Enregistrer le produit';
 }

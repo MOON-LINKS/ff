@@ -332,5 +332,10 @@
   "menu_enter_type": "Saisissez le type",
   "menu_background": "Arrière-plan",
   "menu_add_type": "Ajouter un type",
-  "menu_edit_type": "Modifier le type"
+  "menu_edit_type": "Modifier le type",
+  "item_name": "Nom de l'article",
+  "item_description": "Description",
+  "item_default_price": "Prix principal",
+  "item_add_parameter": "Ajouter un paramètre",
+  "item_save": "Enregistrer le produit"
 }

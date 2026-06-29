@@ -1012,4 +1012,19 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get menu_edit_type => 'تعديل نوع';
+
+  @override
+  String get item_name => 'اسم المنتج';
+
+  @override
+  String get item_description => 'وصف المنتج';
+
+  @override
+  String get item_default_price => 'السعر الأساسي';
+
+  @override
+  String get item_add_parameter => 'إضافة معلمة';
+
+  @override
+  String get item_save => 'حفظ المنتج';
 }

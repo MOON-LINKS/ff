@@ -121,13 +121,13 @@ class _CustomItemEditorState extends ConsumerState<CustomItemEditor> {
                   const SizedBox(height: 10),
                   CustomMenuInput(
                     controller: titleController,
-                    hintText: 'Item Name',
+                    hintText: AppLocalizations.of(context)!.item_name,
                     function: (_) {},
                   ),
                   const SizedBox(height: 10),
                   CustomMenuInput(
                       controller: descriptionController,
-                      hintText: 'Item Description',
+                      hintText: AppLocalizations.of(context)!.item_description,
                       function: (_) {}),
                   //deactivate item
                   /*  widget.item == null

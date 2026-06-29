@@ -2106,6 +2106,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Edit Type'**
   String get menu_edit_type;
+
+  /// No description provided for @item_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Item Name'**
+  String get item_name;
+
+  /// No description provided for @item_description.
+  ///
+  /// In en, this message translates to:
+  /// **'Item Description'**
+  String get item_description;
+
+  /// No description provided for @item_default_price.
+  ///
+  /// In en, this message translates to:
+  /// **'Main Price'**
+  String get item_default_price;
+
+  /// No description provided for @item_add_parameter.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Parameter'**
+  String get item_add_parameter;
+
+  /// No description provided for @item_save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Item'**
+  String get item_save;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

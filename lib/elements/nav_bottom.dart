@@ -29,9 +29,10 @@ class NavBottom extends StatelessWidget {
         BottomNavigationBarItem(
             icon: const Icon(Icons.adjust_rounded),
             label: AppLocalizations.of(context)!.my_services_nav),
-      BottomNavigationBarItem(
-          icon: const Icon(Icons.person),
-          label: AppLocalizations.of(context)!.profile_nav),
+      if (showMyServices)
+        BottomNavigationBarItem(
+            icon: const Icon(Icons.person),
+            label: AppLocalizations.of(context)!.profile_nav),
     ];
     return BottomNavigationBar(
         currentIndex: currentIndex,

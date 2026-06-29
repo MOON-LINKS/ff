@@ -333,5 +333,10 @@
   "menu_enter_type": "Enter type",
   "menu_background": "Background",
   "menu_add_type": "Add Type",
-  "menu_edit_type": "Edit Type"
+  "menu_edit_type": "Edit Type",
+  "item_name": "Item Name",
+  "item_description": "Item Description",
+  "item_default_price": "Main Price",
+  "item_add_parameter": "Add Parameter",
+  "item_save": "Save Item"
 }

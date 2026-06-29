@@ -1012,4 +1012,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get menu_edit_type => 'Edit Type';
+
+  @override
+  String get item_name => 'Item Name';
+
+  @override
+  String get item_description => 'Item Description';
+
+  @override
+  String get item_default_price => 'Main Price';
+
+  @override
+  String get item_add_parameter => 'Add Parameter';
+
+  @override
+  String get item_save => 'Save Item';
 }
