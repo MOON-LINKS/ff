@@ -1027,4 +1027,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get item_save => 'حفظ المنتج';
+
+  @override
+  String get offline => 'أنت غير متصل بالإنترنت. تحقّق من اتصالك.';
 }

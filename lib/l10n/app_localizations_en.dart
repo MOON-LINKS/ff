@@ -258,7 +258,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get feature_300_images => '• 300 images';
 
   @override
-  String get feature_category_images_upload => '• Category Iimages Upload';
+  String get feature_category_images_upload => '• Category Images Upload';
 
   @override
   String get feature_unlimited_social_media_links => '• Unlimited Social Media Links';
@@ -423,7 +423,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get add_on_updated_successfully => 'Add-on updated successfully.';
 
   @override
-  String get subscribe_via_web => ' ';
+  String get subscribe_via_web => 'Web: app.moonlinks.me';
 
   @override
   String get no_plans_to_upgrade => 'No upgrade plans available for this subscription.';
@@ -1027,4 +1027,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get item_save => 'Save Item';
+
+  @override
+  String get offline => 'You\'re offline. Check your connection.';
 }

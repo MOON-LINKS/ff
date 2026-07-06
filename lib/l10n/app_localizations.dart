@@ -598,7 +598,7 @@ abstract class AppLocalizations {
   /// No description provided for @feature_category_images_upload.
   ///
   /// In en, this message translates to:
-  /// **'• Category Iimages Upload'**
+  /// **'• Category Images Upload'**
   String get feature_category_images_upload;
 
   /// No description provided for @feature_unlimited_social_media_links.
@@ -928,7 +928,7 @@ abstract class AppLocalizations {
   /// No description provided for @subscribe_via_web.
   ///
   /// In en, this message translates to:
-  /// **' '**
+  /// **'Web: app.moonlinks.me'**
   String get subscribe_via_web;
 
   /// No description provided for @no_plans_to_upgrade.
@@ -2136,6 +2136,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Save Item'**
   String get item_save;
+
+  /// No description provided for @offline.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re offline. Check your connection.'**
+  String get offline;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -62,7 +62,33 @@ class Services extends StatelessWidget {
                               destination: Catalogue(),
                             ),
                             const SizedBox(height: 16),
-
+                            /* ServiceBtn(
+                              imagePath: "assets/icons/biopage.svg",
+                              title: AppLocalizations.of(context)!.biopage,
+                              subtitle:
+                                  AppLocalizations.of(context)!.free_generator,
+                              destination:
+                                  "https://moonlinks.me/login-signup.php?error=unauthorized",
+                              isWeb: true,
+                            ),
+                            const SizedBox(height: 16),
+                            ServiceBtn(
+                              imagePath: "assets/icons/qr.svg",
+                              title: AppLocalizations.of(context)!.qr_code,
+                              subtitle:
+                                  AppLocalizations.of(context)!.free_generator,
+                              destination: "https://moonlinks.me/qr/main",
+                              isWeb: true,
+                            ),
+                            const SizedBox(height: 16),
+                            ServiceBtn(
+                              imagePath: "assets/icons/barcode.svg",
+                              title: AppLocalizations.of(context)!.barcode,
+                              subtitle:
+                                  AppLocalizations.of(context)!.free_generator,
+                              destination: "https://moonlinks.me/barcode/main",
+                              isWeb: true,
+                            ), */
                             (kIsWeb || !Platform.isIOS)
                                 ? Text(
                                     AppLocalizations.of(context)!

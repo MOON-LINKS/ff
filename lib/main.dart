@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:moonlinks/api/auth_service.dart';
@@ -52,13 +53,18 @@ class MyApp extends ConsumerWidget {
 }
 
 class Main extends ConsumerStatefulWidget {
-  const Main({super.key});
+  final int? initialIndex;
+  const Main({super.key, this.initialIndex});
 
   @override
   ConsumerState<Main> createState() => _MainState();
 }
 
 class _MainState extends ConsumerState<Main> {
+  late int _currentIndex;
+
+  bool get _showMyServices => kIsWeb || !Platform.isIOS;
+
   Future<void> loadSubscribedServices() async {
     final token = await readToken();
     if (token == null) return;
@@ -69,41 +75,38 @@ class _MainState extends ConsumerState<Main> {
       initSocket(userInfo['user']['id'].toString(), ref, token);
 
       updateSubServices(ref, token);
-    } /*  on DioException catch (e) {
-      if (e.response?.statusCode == 401) {
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text("Session expired. Please login again"),
-            ),
-          );
-        }
-      } else {
-        print('❌ API error: ${e.response?.statusCode}');
+    } on DioException catch (e) {
+      if (e.response?.statusCode == 401 || e.response?.statusCode == 403) {
+        // token is genuinely invalid/expired, safe to log out
+        await deleteToken();
       }
-    } */
-    catch (e) {
-      await deleteToken();
-      throw e;
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(AppLocalizations.of(context)!.offline)),
+        );
+      }
+      return;
     }
   }
 
   @override
   void initState() {
     super.initState();
+    _currentIndex = widget.initialIndex ?? 1;
+    // if MyServices isn't in the list on this platform, don't let index point past valid range
+    if (!_showMyServices && _currentIndex >= _visiblePages.length) {
+      _currentIndex = 1;
+    }
     WidgetsBinding.instance.addPostFrameCallback((_) {
       loadSubscribedServices();
     });
   }
 
-  int _currentIndex = 1;
   List<Widget> get _visiblePages {
-    final showMyServices = kIsWeb || !Platform.isIOS;
-
     return [
       const Home(),
       const Services(),
-      if (showMyServices) const MyServices(),
+      if (_showMyServices) const MyServices(),
       const Profile(),
     ];
   }

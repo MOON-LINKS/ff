@@ -243,6 +243,11 @@ class _CatalogueCategoriesState extends ConsumerState<CatalogueCategories> {
                                       ),
                                   ],
                                   onReorder: (oldIndex, newIndex) {
+                                    ref
+                                        .read(catalogueProvider.notifier)
+                                        .reorderCategories(oldIndex, newIndex);
+                                  },
+                                  /* onReorder: (oldIndex, newIndex) {
                                     setState(() {
                                       if (newIndex > oldIndex) newIndex--;
                                       final item =
@@ -258,7 +263,7 @@ class _CatalogueCategoriesState extends ConsumerState<CatalogueCategories> {
                                     ref
                                         .read(catalogueProvider.notifier)
                                         .reorderCategories(oldIndex, newIndex);
-                                  },
+                                  }, */
                                 ),
                               ),
                             )

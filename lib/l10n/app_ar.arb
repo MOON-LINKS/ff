@@ -337,5 +337,7 @@
   "item_description": "وصف المنتج",
   "item_default_price": "السعر الأساسي",
   "item_add_parameter": "إضافة معلمة",
-  "item_save": "حفظ المنتج"
+  "item_save": "حفظ المنتج",
+
+  "offline": "أنت غير متصل بالإنترنت. تحقّق من اتصالك."
 }

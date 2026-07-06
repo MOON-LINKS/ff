@@ -113,16 +113,12 @@ class AuthService {
   }
 
   Future<dynamic> getUserInfo(String token) async {
-    try {
-      final response = await dio.get(
-        '/auth/me',
-        options: Options(
-          headers: {'Authorization': 'Bearer $token'},
-        ),
-      );
-      return response.data;
-    } catch (e) {
-      throw Exception('user info error: $e');
-    }
+    final response = await dio.get(
+      '/auth/me',
+      options: Options(
+        headers: {'Authorization': 'Bearer $token'},
+      ),
+    );
+    return response.data;
   }
 }

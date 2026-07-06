@@ -9,55 +9,69 @@ final catalogueProvider =
           'categories': [
             /*
             {
-              "uuid": "item_def456",
-              "title": "Summer Linen Tee",
-              "description": "Breathable linen, oversized fit",
-              "main_image_url": "https://cdn.example.com/items/def456.jpg",
-              "badges": [],
-              "is_active": 1,
-              "display_order": 2,
-              "images": [],
-              "main_price": 24.99,
-              "pricing_config": {
-                "template_name": null,
-                "derived_from": "T-Shirt",
-                "is_modified": true,
-                "parameters": [
-                  {
-                    "id": "prm_001",
-                    "name": "Color",
-                    "type": "color",
-                    "values": [
-                      { "id": "val_010", "label": "Beige", "hex": "#F5F0E8" }
-                    ]
-                  },
-                  {
-                    "id": "prm_002",
-                    "name": "Size",
-                    "type": "text",
-                    "values": [
-                      { "id": "val_011", "label": "M" },
-                      { "id": "val_012", "label": "L" }
-                    ]
-                  },
-                  {
-                    "id": "prm_099",
-                    "name": "Length",
-                    "type": "text",
-                    "values": [
-                      { "id": "val_013", "label": "Regular" },
-                      { "id": "val_014", "label": "Cropped" }
-                    ]
-                  }
-                ],
-                "combinations": [
-                  { "ids": ["val_010", "val_011", "val_013"], "labels": ["Beige", "M", "Regular"], "price": null , "quantity": 50},
-                  { "ids": ["val_010", "val_011", "val_014"], "labels": ["Beige", "M", "Cropped"], "price": 22.99, "quantity": null},
-                  { "ids": ["val_010", "val_012", "val_013"], "labels": ["Beige", "L", "Regular"], "price": null , "quantity": 50},
-                  { "ids": ["val_010", "val_012", "val_014"], "labels": ["Beige", "L", "Cropped"], "price": 22.99, "quantity": 50}
-                ]
-              }
-            }
+{
+  "uuid": "item_def456",
+  "title": "Summer Linen Tee",
+  "description": "Breathable linen, oversized fit",
+  "main_image_url": "https://cdn.example.com/items/def456.jpg",
+  "badges": [],
+  "is_active": 1,
+  "display_order": 2,
+  "images": [
+    {
+      "url": "https://cdn.example.com/items/def456_red.jpg",
+      "display_order": 0,
+      "pinned_parameter_id": "prm_001",
+      "pinned_value_id": "val_010"
+    },
+    {
+      "url": "https://cdn.example.com/items/def456_general.jpg",
+      "display_order": 1,
+      "pinned_parameter_id": null,
+      "pinned_value_id": null
+    }
+  ],
+  "main_price": 24.99,
+  "pricing_config": {
+    "template_name": null,
+    "derived_from": "T-Shirt",
+    "is_modified": true,
+    "parameters": [
+      {
+        "id": "prm_001",
+        "name": "Color",
+        "type": "color",
+        "values": [
+          { "id": "val_010", "label": "Beige", "hex": "#F5F0E8" }
+        ]
+      },
+      {
+        "id": "prm_002",
+        "name": "Size",
+        "type": "text",
+        "values": [
+          { "id": "val_011", "label": "M" },
+          { "id": "val_012", "label": "L" }
+        ]
+      },
+      {
+        "id": "prm_099",
+        "name": "Length",
+        "type": "text",
+        "values": [
+          { "id": "val_013", "label": "Regular" },
+          { "id": "val_014", "label": "Cropped" }
+        ]
+      }
+    ],
+    "combinations": [
+      { "ids": ["val_010", "val_011", "val_013"], "labels": ["Beige", "M", "Regular"], "price": null, "quantity": 50 },
+      { "ids": ["val_010", "val_011", "val_014"], "labels": ["Beige", "M", "Cropped"], "price": 22.99, "quantity": null },
+      { "ids": ["val_010", "val_012", "val_013"], "labels": ["Beige", "L", "Regular"], "price": null, "quantity": 50 },
+      { "ids": ["val_010", "val_012", "val_014"], "labels": ["Beige", "L", "Cropped"], "price": 22.99, "quantity": 50 }
+    ]
+  }
+}
          */
           ],
           'logo': '',
@@ -489,9 +503,13 @@ class CatalogueNotifier extends StateNotifier<Map<String, dynamic>> {
   }
 
   Future<void> reorderCategories(int oldIndex, int newIndex) async {
+    if (newIndex > oldIndex) newIndex--; // adjust here only
+
     final categories = List<Map<String, dynamic>>.from(
         ((state['payload']['categories'] as List?) ?? [])
             .map((e) => Map<String, dynamic>.from(e)));
+
+    // Sort first so indices match what the UI sees
     categories.sort(
         (a, b) => (a['display_order'] ?? 0).compareTo(b['display_order'] ?? 0));
 
@@ -512,19 +530,35 @@ class CatalogueNotifier extends StateNotifier<Map<String, dynamic>> {
     await _savePayloadToHive();
   }
 
-  Future<void> reorderSubCategories(int oldIndex, int newIndex) async {
+  Future<void> reorderSubCategories(
+      String categoryUuid, int oldIndex, int newIndex) async {
+    if (newIndex > oldIndex) newIndex--;
+
     final categories = List<Map<String, dynamic>>.from(
         ((state['payload']['categories'] as List?) ?? [])
             .map((e) => Map<String, dynamic>.from(e)));
-    categories.sort(
+
+    final catIndex = categories.indexWhere((c) => c['uuid'] == categoryUuid);
+    if (catIndex == -1) return;
+
+    final subcategories = List<Map<String, dynamic>>.from(
+        ((categories[catIndex]['subcategories'] as List?) ?? [])
+            .map((e) => Map<String, dynamic>.from(e)));
+
+    subcategories.sort(
         (a, b) => (a['display_order'] ?? 0).compareTo(b['display_order'] ?? 0));
 
-    final moved = categories.removeAt(oldIndex);
-    categories.insert(newIndex, moved);
+    final moved = subcategories.removeAt(oldIndex);
+    subcategories.insert(newIndex, moved);
 
-    for (int i = 0; i < categories.length; i++) {
-      categories[i]['display_order'] = i;
+    for (int i = 0; i < subcategories.length; i++) {
+      subcategories[i]['display_order'] = i;
     }
+
+    categories[catIndex] = {
+      ...categories[catIndex],
+      'subcategories': subcategories,
+    };
 
     state = {
       ...state,

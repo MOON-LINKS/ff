@@ -337,5 +337,7 @@
   "item_description": "Description",
   "item_default_price": "Prix principal",
   "item_add_parameter": "Ajouter un paramètre",
-  "item_save": "Enregistrer le produit"
+  "item_save": "Enregistrer le produit",
+
+  "offline": "Vous êtes hors ligne. Vérifiez votre connexion."
 }

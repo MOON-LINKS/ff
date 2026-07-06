@@ -62,7 +62,7 @@ class _CatalogueItemEditorState extends ConsumerState<CatalogueItemEditor> {
     super.dispose();
   }
 
-  void _addParameter() {}
+  void _addParameter(dynamic values) {}
   void _addVAlue(String parameterId) {}
   @override
   Widget build(BuildContext context) {

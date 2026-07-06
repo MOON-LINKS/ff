@@ -1027,4 +1027,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get item_save => 'Enregistrer le produit';
+
+  @override
+  String get offline => 'Vous êtes hors ligne. Vérifiez votre connexion.';
 }

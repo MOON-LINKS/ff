@@ -46,7 +46,10 @@ class _LoginState extends ConsumerState<Login> {
           await addToken(token);
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => Main()),
+            MaterialPageRoute(
+                builder: (context) => Main(
+                      initialIndex: 2,
+                    )),
           );
         } else {
           ScaffoldMessenger.of(context).showSnackBar(

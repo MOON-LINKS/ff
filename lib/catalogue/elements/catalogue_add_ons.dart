@@ -50,7 +50,7 @@ class _CatalogueAddOnsState extends State<CatalogueAddOns> {
                 child: Column(
               spacing: 10,
               children: [
-                Text('AppLocalizations.of(context)!.add_on',
+                Text(AppLocalizations.of(context)!.add_on,
                     style: TextStyle(color: Colors.purple, fontSize: 18)),
                 Text(
                     '${AppLocalizations.of(context)!.images_added}: ${addOn?['quantity'] ?? 0}',

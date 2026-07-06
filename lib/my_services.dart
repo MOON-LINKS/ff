@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -35,12 +36,27 @@ class _MyServicesState extends ConsumerState<MyServices> {
   dynamic planChosen;
   Future<void> getUserSubscription() async {
     String? token = await readToken();
-    if (token != null) {
+    if (token == null) return;
+
+    try {
       final user = await AuthService().getUserInfo(token);
       setState(() {
         cred = user["user"]["cred"];
         isLogged = true;
       });
+    } on DioException catch (e) {
+      if (e.response?.statusCode == 401 || e.response?.statusCode == 403) {
+        await deleteToken();
+        setState(() {
+          isLogged = false;
+        });
+      } else {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(AppLocalizations.of(context)!.offline)),
+          );
+        }
+      }
     }
   }
 

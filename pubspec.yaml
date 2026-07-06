@@ -5,7 +5,7 @@ description: "A full services app"
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 
-version: 1.2.4+35
+version: 1.2.4+36
 
 flutter_icons:
   android: true

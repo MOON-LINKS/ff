@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -37,18 +38,28 @@ class _LoggedState extends ConsumerState<Logged> {
   }
 
   Future<void> getUserInfo() async {
-    try {
-      final storedToken = await readToken();
-      final response = await authService.getUserInfo(storedToken!);
+    final storedToken = await readToken();
+    if (storedToken == null) return;
 
+    try {
+      final response = await authService.getUserInfo(storedToken);
       final user = response["user"];
       setState(() {
         session = response['user']['sessions'].length;
       });
       nameController.text = user["name"];
       credController.text = user["cred"];
-    } catch (e) {
-      throw Exception('error: $e');
+    } on DioException catch (e) {
+      if (e.response?.statusCode == 401 || e.response?.statusCode == 403) {
+        await deleteToken();
+        // navigate to login / update auth state here if needed
+      } else {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(AppLocalizations.of(context)!.offline)),
+          );
+        }
+      }
     }
   }
 

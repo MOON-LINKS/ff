@@ -183,7 +183,7 @@ class _CatalogueSubcategoriesState
                                       });
                                       ref
                                           .read(catalogueProvider.notifier)
-                                          .reorderSubCategories(
+                                          .reorderSubCategories(widget.catUuid,
                                               oldIndex, newIndex);
                                     },
                                   ),

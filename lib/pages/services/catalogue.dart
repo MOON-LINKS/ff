@@ -132,10 +132,10 @@ class _CatalogueState extends ConsumerState<Catalogue> {
                   ),
                 ),
                 const SizedBox(height: 25),
-                Text(
+                /* Text(
                   'COMING SOON!',
                   style: TextStyle(fontSize: 25),
-                )
+                ) */
                 /*  (kIsWeb || !Platform.isIOS)
                     ? Padding(
                         padding: EdgeInsetsGeometry.symmetric(vertical: 40),

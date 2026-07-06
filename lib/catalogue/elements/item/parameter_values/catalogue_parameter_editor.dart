@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CatalogueParameterEditor extends StatefulWidget {
   final dynamic parameters;
   final String? chosenParameter;
-  final VoidCallback addOrUpdateParameter;
+  final Function(Map<String, dynamic> parameter) addOrUpdateParameter;
   const CatalogueParameterEditor(
       {super.key,
       required this.parameters,
